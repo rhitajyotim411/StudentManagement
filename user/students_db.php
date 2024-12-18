@@ -28,32 +28,34 @@ session_start();
             die(header("refresh:2; URL=../index.php"));
         }
 
-        require_once '../inc/connect.php';
-        $post = $_SESSION['post'];
-        unset($_SESSION['post']);
+        echo $_POST['class']
 
-        $tbname = "user_login";
-        $uid = $post["uid"];
-        $passwd = $post["passwd"];
+        // require_once '../inc/connect.php';
+        // $post = $_SESSION['post'];
+        // unset($_SESSION['post']);
 
-        $stmt = $conn->query("SELECT name, passwd from {$tbname} where uid='{$uid}'");
-        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+        // $tbname = "user_login";
+        // $uid = $post["uid"];
+        // $passwd = $post["passwd"];
 
-        if ($stmt->rowCount() < 1) {
-            echo "<h5>No such user present</h5>";
-            echo "Redirecting to login...";
-            header("refresh:2; URL=./login.php");
-        } else {
-            if (password_verify($passwd, $data['passwd'])) {
-                $_SESSION['UID'] = $uid;
-                $_SESSION['name'] = $data['name'];
-                header("Location: ./dashboard.php");
-            } else {
-                echo "<span style=\"color: #f44900\">Wrong password</span><br>";
-                echo "Redirecting to login...";
-                header("refresh:2; URL=./login.php");
-            }
-        }
+        // $stmt = $conn->query("SELECT name, passwd from {$tbname} where uid='{$uid}'");
+        // $data = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        // if ($stmt->rowCount() < 1) {
+        //     echo "<h5>No such user present</h5>";
+        //     echo "Redirecting to login...";
+        //     header("refresh:2; URL=./login.php");
+        // } else {
+        //     if (password_verify($passwd, $data['passwd'])) {
+        //         $_SESSION['UID'] = $uid;
+        //         $_SESSION['name'] = $data['name'];
+        //         header("Location: ./dashboard.php");
+        //     } else {
+        //         echo "<span style=\"color: #f44900\">Wrong password</span><br>";
+        //         echo "Redirecting to login...";
+        //         header("refresh:2; URL=./login.php");
+        //     }
+        // }
         ?>
     </div>
 </body>

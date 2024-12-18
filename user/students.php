@@ -30,81 +30,95 @@ session_start();
             }
             ?>
 
-            <h2 class="mb-3">School Name</h2>
+            <h2 class="mb-3">Class List</h2>
 
-            <!-- Card 1 -->
+            <!-- Nursery -->
             <div class="col-md-4 col-sm-6 col-12 mb-4">
                 <div class="card h-100">
                     <div class="card-body user-card d-flex flex-column align-items-center justify-content-center">
-                        <h5 class="card-title">Student Details</h5>
-                        <p class="card-text">Fetch class-wise student details</p>
-                        <a href="./students.php" class="btn btn-primary">View</a>
+                        <h5 class="card-title">Nursery</h5>
+                        <form action="students_db.php" method="POST">
+                            <input type="hidden" name="class" value="Nursery">
+                            <button type="submit" class="btn btn-primary">View</button>
+                        </form>
                     </div>
                 </div>
             </div>
 
-            <!-- Card 2 -->
+            <!-- KG1 -->
             <div class="col-md-4 col-sm-6 col-12 mb-4">
                 <div class="card h-100">
                     <div class="card-body user-card d-flex flex-column align-items-center justify-content-center">
-                        <h5 class="card-title">Fees Collection</h5>
-                        <p class="card-text">View monthly fees recorded</p>
-                        <a href="#" class="btn btn-primary">View</a>
+                        <h5 class="card-title">KG1</h5>
+                        <form action="students_db.php" method="POST">
+                            <input type="hidden" name="class" value="KG1">
+                            <button type="submit" class="btn btn-primary">View</button>
+                        </form>
                     </div>
                 </div>
             </div>
 
-            <!-- Card 3 -->
+            <!-- KG2 -->
             <div class="col-md-4 col-sm-6 col-12 mb-4">
                 <div class="card h-100">
                     <div class="card-body user-card d-flex flex-column align-items-center justify-content-center">
-                        <h5 class="card-title">Attendance</h5>
-                        <p class="card-text">View student attendance</p>
-                        <a href="#" class="btn btn-primary">View</a>
+                        <h5 class="card-title">KG2</h5>
+                        <form action="students_db.php" method="POST">
+                            <input type="hidden" name="class" value="KG2">
+                            <button type="submit" class="btn btn-primary">View</button>
+                        </form>
                     </div>
                 </div>
             </div>
 
-            <!-- Card 4 -->
+            <!-- Class 1 -->
             <div class="col-md-4 col-sm-6 col-12 mb-4">
                 <div class="card h-100">
                     <div class="card-body user-card d-flex flex-column align-items-center justify-content-center">
-                        <h5 class="card-title">ID card</h5>
-                        <p class="card-text">View and print student ID card</p>
-                        <a href="#" class="btn btn-primary">View</a>
+                        <h5 class="card-title">Class 1</h5>
+                        <form action="students_db.php" method="POST">
+                            <input type="hidden" name="class" value="Class 1">
+                            <button type="submit" class="btn btn-primary">View</button>
+                        </form>
                     </div>
                 </div>
             </div>
 
-            <!-- Card 5 -->
+            <!-- Class 2 -->
             <div class="col-md-4 col-sm-6 col-12 mb-4">
                 <div class="card h-100">
                     <div class="card-body user-card d-flex flex-column align-items-center justify-content-center">
-                        <h5 class="card-title">Report card</h5>
-                        <p class="card-text">View and print report card</p>
-                        <a href="#" class="btn btn-primary">View</a>
+                        <h5 class="card-title">Class 2</h5>
+                        <form action="students_db.php" method="POST">
+                            <input type="hidden" name="class" value="Class 2">
+                            <button type="submit" class="btn btn-primary">View</button>
+                        </form>
                     </div>
                 </div>
             </div>
 
-            <!-- Card 6 -->
+            <!-- Class 3 -->
             <div class="col-md-4 col-sm-6 col-12 mb-4">
                 <div class="card h-100">
                     <div class="card-body user-card d-flex flex-column align-items-center justify-content-center">
-                        <h5 class="card-title">Students' Class Routine</h5>
-                        <p class="card-text">View class routine of students</p>
-                        <a href="#" class="btn btn-primary">View</a>
+                        <h5 class="card-title">Class 3</h5>
+                        <form action="students_db.php" method="POST">
+                            <input type="hidden" name="class" value="Class 3">
+                            <button type="submit" class="btn btn-primary">View</button>
+                        </form>
                     </div>
                 </div>
             </div>
 
-            <!-- Card 7 -->
+            <!-- Class 4 -->
             <div class="col-md-4 col-sm-6 col-12 mb-4">
                 <div class="card h-100">
                     <div class="card-body user-card d-flex flex-column align-items-center justify-content-center">
-                        <h5 class="card-title">Teachers' Class Routine</h5>
-                        <p class="card-text">View class routine of teachers</p>
-                        <a href="#" class="btn btn-primary">View</a>
+                        <h5 class="card-title">Class 4</h5>
+                        <form action="students_db.php" method="POST">
+                            <input type="hidden" name="class" value="Class 4">
+                            <button type="submit" class="btn btn-primary">View</button>
+                        </form>
                     </div>
                 </div>
             </div>
