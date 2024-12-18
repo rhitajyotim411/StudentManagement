@@ -1,0 +1,18 @@
+body {
+  background-color: #7feddf;
+  color: #08314a;
+}
+
+hr {
+  width: 50%;
+}
+
+.ref {
+  color: #08314a;
+  text-decoration: none;
+  font-style: italic;
+}
+
+.ref:hover {
+  color: #008c8b;
+}

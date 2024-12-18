@@ -1,0 +1,13 @@
+.user-card {
+  background-color: #ebfffe;
+  border-radius: 5px;
+  color: #08314a;
+}
+
+.user-card:hover {
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 5px 8px 1px rgba(8, 49, 74, 0.25),
+    0 7px 20px 2px rgba(8, 49, 74, 0.2);
+  margin-top: -3px;
+}
