@@ -16,13 +16,7 @@
             <a class="nav-link" href="./dashboard.php">Dashboard</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Leaves</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Record</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Staff</a>
+            <a class="nav-link" href="#">Students</a>
           </li>
         </ul>
       </div>
