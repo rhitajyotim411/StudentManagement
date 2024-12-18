@@ -83,14 +83,18 @@ if (isset($_POST['passwd']))
 <body>
     <?php require '../inc/header.php' ?>
     <div class="container-fluid text-center">
-        <?php
-        if (isset($_SESSION['UID'])) {
-            echo "{$_SESSION['UID']} already logged in<br>";
-            echo "Redirecting to dashboard...";
-            die(header("refresh:2; URL=./dashboard.php"));
-        }
-        ?>
         <div class="row justify-content-center mt-5">
+            <?php
+            if (isset($_SESSION['UID'])) {
+                ?>
+                <h5>
+                    <?php echo $_SESSION['UID'] ?> already logged in <br>
+                    Redirecting to dashboard...
+                </h5>
+                <?php
+                die(header("refresh:2; URL=./dashboard.php"));
+            }
+            ?>
             <div class="col-md-6 mt-3 mb-3">
                 <div class="card">
                     <div class="card-body">
