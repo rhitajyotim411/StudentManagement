@@ -15,6 +15,15 @@
           <li class="nav-item">
             <a class="nav-link" href="./dashboard.php">Dashboard</a>
           </li>
+          <?php
+          // Check if on the student details or class list page
+          $currentPage = basename($_SERVER['SCRIPT_NAME'], ".php");
+          if ($currentPage === 'students_db') {
+            ?>
+            <li class="nav-item">
+              <a class="nav-link" href="./students.php">Class List</a>
+            </li>
+          <?php } ?>
         </ul>
       </div>
     </div>

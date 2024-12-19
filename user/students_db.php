@@ -8,55 +8,74 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Login</title>
+    <title>Staff Leaves</title>
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- CSS -->
     <link href="../style/main.css" rel="stylesheet">
+    <link href="../style/table.css" rel="stylesheet">
 </head>
 
 <body>
     <?php require '../inc/header.php' ?>
-    <div class="container-fluid text-center mt-5">
+    <div class="container-fluid text-center mt-3">
+
+        <form class="mb-3" action="stu_reg.php" method="post">
+            <input type="submit" name="submit" class="btn btn-primary" value="Register student">
+        </form>
+
         <?php
-        if (!isset($_SESSION['post']) && $_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERVER['SCRIPT_FILENAME'])) {
-            header('HTTP/1.0 403 Forbidden', TRUE, 403);
-            echo '<h2 style="color: red">Access Denied!!</h2>';
-            echo 'Redirecting...';
-            die(header("refresh:2; URL=../index.php"));
+        if (!isset($_SESSION['UID'])) {
+            echo "Please login to continue<br>";
+            echo "Redirecting to login page...";
+            die(header("refresh:2; URL=./login.php"));
         }
 
-        echo $_POST['class']
+        require_once '../inc/connect.php';
 
-        // require_once '../inc/connect.php';
-        // $post = $_SESSION['post'];
-        // unset($_SESSION['post']);
+        $tbname = "stu_dtl";
+        $class = $_POST["class"];
 
-        // $tbname = "user_login";
-        // $uid = $post["uid"];
-        // $passwd = $post["passwd"];
+        $stmt = $conn->query("SELECT UID, Name FROM $tbname where class='$class'");
 
-        // $stmt = $conn->query("SELECT name, passwd from {$tbname} where uid='{$uid}'");
-        // $data = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        // if ($stmt->rowCount() < 1) {
-        //     echo "<h5>No such user present</h5>";
-        //     echo "Redirecting to login...";
-        //     header("refresh:2; URL=./login.php");
-        // } else {
-        //     if (password_verify($passwd, $data['passwd'])) {
-        //         $_SESSION['UID'] = $uid;
-        //         $_SESSION['name'] = $data['name'];
-        //         header("Location: ./dashboard.php");
-        //     } else {
-        //         echo "<span style=\"color: #f44900\">Wrong password</span><br>";
-        //         echo "Redirecting to login...";
-        //         header("refresh:2; URL=./login.php");
-        //     }
-        // }
+        if ($stmt->rowCount() < 1) {
+            die("<p>No students found<br></p>");
+        }
         ?>
+
+        <h2>Student List</h2>
+        <div class="d-flex justify-content-center">
+            <hr>
+        </div>
+
+        <div class="d-flex justify-content-center mt-3 mb-3">
+            <div class="overflow-auto">
+                <table>
+                    <tr>
+                        <th>UID</th>
+                        <th>Name</th>
+                        <th>Class</th>
+                    </tr>
+                    <?php
+                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                        echo "<tr>";
+                        echo "<td>{$row['UID']}</td>";
+                        echo "<td>{$row['Name']}</td>";
+                        echo "<td>{$class}</td>";
+                        echo "<td>";
+                        echo "<form action=\"./stu_dtl.php\" method=\"post\">";
+                        echo "<input type=\"hidden\" name=\"stu_id\" value={$row['UID']}>";
+                        echo "<input type=\"submit\" name=\"submit\" class=\"btn btn-primary\" value=\"View\">";
+                        echo "</form>";
+                        echo "</td>";
+                        echo "</tr>";
+                    }
+                    ?>
+                </table>
+            </div>
+        </div>
     </div>
 </body>
 
