@@ -128,12 +128,12 @@ if (isset($_POST['register'])) {
                                         <select name="class" class="form-select" required>
                                             <option value="">Select Class</option>
                                             <option value="Nursery" <?php echo (isset($class) && $class == 'Nursery') ? 'selected' : ''; ?>>Nursery</option>
-                                            <option value="KG1" <?php echo (isset($class) && $class == 'KG1') ? 'selected' : ''; ?>>KG1</option>
-                                            <option value="KG2" <?php echo (isset($class) && $class == 'KG2') ? 'selected' : ''; ?>>KG2</option>
-                                            <option value="Class 1" <?php echo (isset($class) && $class == 'Class 1') ? 'selected' : ''; ?>>Class 1</option>
-                                            <option value="Class 2" <?php echo (isset($class) && $class == 'Class 2') ? 'selected' : ''; ?>>Class 2</option>
-                                            <option value="Class 3" <?php echo (isset($class) && $class == 'Class 3') ? 'selected' : ''; ?>>Class 3</option>
-                                            <option value="Class 4" <?php echo (isset($class) && $class == 'Class 4') ? 'selected' : ''; ?>>Class 4</option>
+                                            <option value="KG-I" <?php echo (isset($class) && $class == 'KG-I') ? 'selected' : ''; ?>>KG-I</option>
+                                            <option value="KG-II" <?php echo (isset($class) && $class == 'KG-II') ? 'selected' : ''; ?>>KG-II</option>
+                                            <option value="S-I" <?php echo (isset($class) && $class == 'S-I') ? 'selected' : ''; ?>>S-I</option>
+                                            <option value="S-II" <?php echo (isset($class) && $class == 'S-II') ? 'selected' : ''; ?>>S-II</option>
+                                            <option value="S-III" <?php echo (isset($class) && $class == 'S-III') ? 'selected' : ''; ?>>S-III</option>
+                                            <option value="S-IV" <?php echo (isset($class) && $class == 'S-IV') ? 'selected' : ''; ?>>S-IV</option>
                                         </select>
                                     </td>
                                 </tr>

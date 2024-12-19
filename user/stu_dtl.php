@@ -8,7 +8,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student ID</title>
+    <title>Student details</title>
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -20,7 +20,7 @@ session_start();
 
 <body>
     <?php require '../inc/header.php' ?>
-    <div class="container-fluid text-center mt-3">
+    <div class="container-fluid text-center mt-4">
         <?php
         if (!isset($_SESSION['post']) && $_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERVER['SCRIPT_FILENAME'])) {
             header('HTTP/1.0 403 Forbidden', TRUE, 403);
@@ -64,10 +64,21 @@ session_start();
                 </div>
             </div>
 
-            <form class="mt-3 mb-3" action="students_db.php" method="POST">
-                <input type="hidden" name="class" value="<?php echo $student['Class']; ?>">
-                <button type="submit" class="btn btn-primary">Student List</button>
-            </form>
+            <div class="d-flex justify-content-center gap-2 mt-3">
+                <form class="mt-3 mb-3" action="students_db.php" method="POST">
+                    <input type="hidden" name="class" value="<?php echo $student['Class']; ?>">
+                    <button type="submit" class="btn btn-primary">Student List</button>
+                </form>
+
+                <form action="ID_gen.php" method="post" class="mt-3">
+                    <input type="hidden" name="class" value="<?php echo htmlspecialchars($student['Class']); ?>">
+                    <input type="hidden" name="rollno" value="<?php echo htmlspecialchars($student['RollNo']); ?>">
+                    <input type="hidden" name="name" value="<?php echo htmlspecialchars($student['Name']); ?>">
+                    <input type="hidden" name="dob" value="<?php echo htmlspecialchars($student['DOB']); ?>">
+                    <input type="hidden" name="phone" value="<?php echo htmlspecialchars($student['Phone']); ?>">
+                    <button type="submit" class="btn btn-success">Generate ID</button>
+                </form>
+            </div>
         </div>
     </div>
 </body>

@@ -1,0 +1,35 @@
+.id-card {
+    width: 350px;
+    border: 2px solid #000;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: left;
+    background-color: #fff;
+}
+
+.id-card img {
+    width: 120px;
+    height: 150px;
+    object-fit: fill;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.id-details {
+    display: flex;
+    align-items: center;
+}
+
+.id-details .info {
+    margin-left: 15px;
+}
+
+.btn-upload {
+    margin: 10px 0;
+}
+
+@media print {
+    .no-print {
+        display: none;
+    }
+}

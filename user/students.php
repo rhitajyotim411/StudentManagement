@@ -45,78 +45,78 @@ session_start();
                 </div>
             </div>
 
-            <!-- KG1 -->
+            <!-- KG-I -->
             <div class="col-md-4 col-sm-6 col-12 mb-4">
                 <div class="card h-100">
                     <div class="card-body user-card d-flex flex-column align-items-center justify-content-center">
-                        <h5 class="card-title">KG1</h5>
+                        <h5 class="card-title">KG-I</h5>
                         <form action="students_db.php" method="POST">
-                            <input type="hidden" name="class" value="KG1">
+                            <input type="hidden" name="class" value="KG-I">
                             <button type="submit" class="btn btn-primary">View</button>
                         </form>
                     </div>
                 </div>
             </div>
 
-            <!-- KG2 -->
+            <!-- KG-II -->
             <div class="col-md-4 col-sm-6 col-12 mb-4">
                 <div class="card h-100">
                     <div class="card-body user-card d-flex flex-column align-items-center justify-content-center">
-                        <h5 class="card-title">KG2</h5>
+                        <h5 class="card-title">KG-II</h5>
                         <form action="students_db.php" method="POST">
-                            <input type="hidden" name="class" value="KG2">
+                            <input type="hidden" name="class" value="KG-II">
                             <button type="submit" class="btn btn-primary">View</button>
                         </form>
                     </div>
                 </div>
             </div>
 
-            <!-- Class 1 -->
+            <!-- S-I -->
             <div class="col-md-4 col-sm-6 col-12 mb-4">
                 <div class="card h-100">
                     <div class="card-body user-card d-flex flex-column align-items-center justify-content-center">
-                        <h5 class="card-title">Class 1</h5>
+                        <h5 class="card-title">S-I</h5>
                         <form action="students_db.php" method="POST">
-                            <input type="hidden" name="class" value="Class 1">
+                            <input type="hidden" name="class" value="S-I">
                             <button type="submit" class="btn btn-primary">View</button>
                         </form>
                     </div>
                 </div>
             </div>
 
-            <!-- Class 2 -->
+            <!-- S-II -->
             <div class="col-md-4 col-sm-6 col-12 mb-4">
                 <div class="card h-100">
                     <div class="card-body user-card d-flex flex-column align-items-center justify-content-center">
-                        <h5 class="card-title">Class 2</h5>
+                        <h5 class="card-title">S-II</h5>
                         <form action="students_db.php" method="POST">
-                            <input type="hidden" name="class" value="Class 2">
+                            <input type="hidden" name="class" value="S-II">
                             <button type="submit" class="btn btn-primary">View</button>
                         </form>
                     </div>
                 </div>
             </div>
 
-            <!-- Class 3 -->
+            <!-- S-III -->
             <div class="col-md-4 col-sm-6 col-12 mb-4">
                 <div class="card h-100">
                     <div class="card-body user-card d-flex flex-column align-items-center justify-content-center">
-                        <h5 class="card-title">Class 3</h5>
+                        <h5 class="card-title">S-III</h5>
                         <form action="students_db.php" method="POST">
-                            <input type="hidden" name="class" value="Class 3">
+                            <input type="hidden" name="class" value="S-III">
                             <button type="submit" class="btn btn-primary">View</button>
                         </form>
                     </div>
                 </div>
             </div>
 
-            <!-- Class 4 -->
+            <!-- S-IV -->
             <div class="col-md-4 col-sm-6 col-12 mb-4">
                 <div class="card h-100">
                     <div class="card-body user-card d-flex flex-column align-items-center justify-content-center">
-                        <h5 class="card-title">Class 4</h5>
+                        <h5 class="card-title">S-IV</h5>
                         <form action="students_db.php" method="POST">
-                            <input type="hidden" name="class" value="Class 4">
+                            <input type="hidden" name="class" value="S-IV">
                             <button type="submit" class="btn btn-primary">View</button>
                         </form>
                     </div>
