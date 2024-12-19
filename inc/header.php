@@ -18,7 +18,11 @@
           <?php
           // Check if on the student details or class list page
           $currentPage = basename($_SERVER['SCRIPT_NAME'], ".php");
-          if ($currentPage === 'students_db') {
+          if (
+            $currentPage === 'students_db'
+            || $currentPage === 'stu_reg'
+            || $currentPage === 'stu_dtl'
+          ) {
             ?>
             <li class="nav-item">
               <a class="nav-link" href="./students.php">Class List</a>
