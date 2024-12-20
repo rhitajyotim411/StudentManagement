@@ -65,9 +65,10 @@ session_start();
             </div>
 
             <div class="d-flex justify-content-center gap-2 mt-3">
-                <form action="students_db.php" method="POST">
+                <form action="stu_del.php" method="POST" onsubmit="return confirmDelete();">
+                    <input type="hidden" name="uid" value="<?php echo $student['UID']; ?>">
                     <input type="hidden" name="class" value="<?php echo $student['Class']; ?>">
-                    <button type="submit" class="btn btn-primary">Student List</button>
+                    <button type="submit" class="btn btn-danger">Terminate</button>
                 </form>
 
                 <form action="stu_updt.php" method="post">
@@ -83,6 +84,11 @@ session_start();
                     <button type="submit" class="btn btn-warning">Edit details</button>
                 </form>
 
+                <form action="students_db.php" method="POST">
+                    <input type="hidden" name="class" value="<?php echo $student['Class']; ?>">
+                    <button type="submit" class="btn btn-primary">Student List</button>
+                </form>
+
                 <form action="ID_gen.php" method="post">
                     <input type="hidden" name="class" value="<?php echo htmlspecialchars($student['Class']); ?>">
                     <input type="hidden" name="rollno" value="<?php echo htmlspecialchars($student['RollNo']); ?>">
@@ -94,6 +100,12 @@ session_start();
             </div>
         </div>
     </div>
+
+    <script>
+        function confirmDelete() {
+            return confirm("Are you sure you want to terminate this student?");
+        }
+    </script>
 </body>
 
 </html>
