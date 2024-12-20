@@ -33,6 +33,7 @@ session_start();
         unset($_SESSION['post']);
 
         $tbname = "stu_dtl";
+        $uid = $post["uid"];
         $class = $post["class"];
         $rollno = $post['rollno'];
         $name = $post['name'];
@@ -48,10 +49,20 @@ session_start();
         if ($stmt->rowCount() > 0) {
             echo "<h5>Student with roll no. {$rollno} already registered in class {$class}</h5>";
         } else {
+
             try {
-                // student registration
-                $sql = "INSERT INTO {$tbname} (class, rollno, name, guardian, dob, address, phone, email)
-        VALUES (:class, :rollno, :name, :guardian, :dob, :address, :phone, :email)";
+                // Update student details
+                $sql = "UPDATE {$tbname}
+            SET class = :class,
+                rollno = :rollno,
+                name = :name,
+                guardian = :guardian,
+                dob = :dob,
+                address = :address,
+                phone = :phone,
+                email = :email
+            WHERE uid = :uid";
+
                 $stmt = $conn->prepare($sql);
                 $stmt->execute([
                     ':class' => $class,
@@ -62,21 +73,30 @@ session_start();
                     ':address' => $address,
                     ':phone' => $phone,
                     ':email' => $email,
+                    ':uid' => $uid,
                 ]);
 
             } catch (PDOException $e) {
-                echo "Insertion failed: " . $e->getMessage();
+                echo "Update failed: " . $e->getMessage();
                 die("<br><a class=\"ref\" href='../index.php'>Homepage</a>");
             }
 
-            echo "<h5>Registered Successfully</h5>";
+            echo "<h5>Details updated Successfully</h5>";
         }
         ?>
-        
+
         <div class="d-flex justify-content-center gap-2 mt-3">
-            <form action="stu_reg.php" method="post">
-                <input type="hidden" name="class" value="<?php echo $class; ?>">
-                <input type="submit" name="submit" class="btn btn-primary" value="Register Another">
+            <form action="stu_updt.php" method="post">
+                <input type="hidden" name="uid" value="<?php echo htmlspecialchars($uid); ?>">
+                <input type="hidden" name="class" value="<?php echo htmlspecialchars($class); ?>">
+                <input type="hidden" name="rollno" value="<?php echo htmlspecialchars($rollno); ?>">
+                <input type="hidden" name="name" value="<?php echo htmlspecialchars($name); ?>">
+                <input type="hidden" name="guardian" value="<?php echo htmlspecialchars($guardian); ?>">
+                <input type="hidden" name="dob" value="<?php echo htmlspecialchars($dob); ?>">
+                <input type="hidden" name="address" value="<?php echo htmlspecialchars($address); ?>">
+                <input type="hidden" name="phone" value="<?php echo htmlspecialchars($phone); ?>">
+                <input type="hidden" name="email" value="<?php echo htmlspecialchars($email); ?>">
+                <button type="submit" class="btn btn-primary">Try again</button>
             </form>
 
             <form action="students_db.php" method="POST">

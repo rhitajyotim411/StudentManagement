@@ -65,12 +65,25 @@ session_start();
             </div>
 
             <div class="d-flex justify-content-center gap-2 mt-3">
-                <form class="mt-3 mb-3" action="students_db.php" method="POST">
+                <form action="students_db.php" method="POST">
                     <input type="hidden" name="class" value="<?php echo $student['Class']; ?>">
                     <button type="submit" class="btn btn-primary">Student List</button>
                 </form>
 
-                <form action="ID_gen.php" method="post" class="mt-3">
+                <form action="stu_updt.php" method="post">
+                    <input type="hidden" name="uid" value="<?php echo htmlspecialchars($student['UID']); ?>">
+                    <input type="hidden" name="class" value="<?php echo htmlspecialchars($student['Class']); ?>">
+                    <input type="hidden" name="rollno" value="<?php echo htmlspecialchars($student['RollNo']); ?>">
+                    <input type="hidden" name="name" value="<?php echo htmlspecialchars($student['Name']); ?>">
+                    <input type="hidden" name="guardian" value="<?php echo htmlspecialchars($student['Guardian']); ?>">
+                    <input type="hidden" name="dob" value="<?php echo htmlspecialchars($student['DOB']); ?>">
+                    <input type="hidden" name="address" value="<?php echo htmlspecialchars($student['Address']); ?>">
+                    <input type="hidden" name="phone" value="<?php echo htmlspecialchars($student['Phone']); ?>">
+                    <input type="hidden" name="email" value="<?php echo htmlspecialchars($student['Email']); ?>">
+                    <button type="submit" class="btn btn-warning">Edit details</button>
+                </form>
+
+                <form action="ID_gen.php" method="post">
                     <input type="hidden" name="class" value="<?php echo htmlspecialchars($student['Class']); ?>">
                     <input type="hidden" name="rollno" value="<?php echo htmlspecialchars($student['RollNo']); ?>">
                     <input type="hidden" name="name" value="<?php echo htmlspecialchars($student['Name']); ?>">
