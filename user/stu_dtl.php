@@ -97,6 +97,15 @@ session_start();
                     <input type="hidden" name="phone" value="<?php echo htmlspecialchars($student['Phone']); ?>">
                     <button type="submit" class="btn btn-success">Generate ID</button>
                 </form>
+
+                <form action="Rprt_gen.php" method="post">
+                    <input type="hidden" name="class" value="<?php echo htmlspecialchars($student['Class']); ?>">
+                    <input type="hidden" name="rollno" value="<?php echo htmlspecialchars($student['RollNo']); ?>">
+                    <input type="hidden" name="name" value="<?php echo htmlspecialchars($student['Name']); ?>">
+                    <input type="hidden" name="guardian" value="<?php echo htmlspecialchars($student['Guardian']); ?>">
+                    <input type="hidden" name="dob" value="<?php echo htmlspecialchars($student['DOB']); ?>">
+                    <button type="submit" class="btn btn-info">Generate Report</button>
+                </form>
             </div>
         </div>
     </div>

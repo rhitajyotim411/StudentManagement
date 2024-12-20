@@ -16,6 +16,17 @@ session_start();
     <!-- Custom CSS -->
     <link href="../style/main.css" rel="stylesheet">
     <link href="../style/IDcard.css" rel="stylesheet">
+    <style>
+        @media print {
+            body {
+                background-color: white !important;
+            }
+
+            .no-print {
+                display: none;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -62,7 +73,7 @@ session_start();
             <input type="file" id="photoUpload" class="form-control btn-upload" accept="image/*">
 
             <div class="d-flex justify-content-center gap-2 mt-3">
-                <button id="printBtn" class="btn btn-success" onclick="prepareForPrint()" disabled>Print ID Card</button>
+                <button id="printBtn" class="btn btn-success" onclick="window.print()" disabled>Print ID Card</button>
 
                 <form action="students_db.php" method="POST">
                     <input type="hidden" name="class" value="<?php echo $class; ?>">
@@ -90,20 +101,6 @@ session_start();
                 reader.readAsDataURL(file);
             }
         });
-
-        function prepareForPrint() {
-            // Store the original background color
-            const originalBg = document.body.style.backgroundColor;
-
-            // Set background to white
-            document.body.style.backgroundColor = '#fff';
-
-            // Trigger the print dialog
-            window.print();
-
-            // Revert to the original background color after printing
-            document.body.style.backgroundColor = originalBg;
-        }
     </script>
 </body>
 

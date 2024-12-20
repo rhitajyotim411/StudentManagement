@@ -48,7 +48,7 @@ session_start();
         }
         ?>
 
-        <h2>Student List</h2>
+        <h2>Student List for <?php echo $class ?></h2>
         <div class="d-flex justify-content-center">
             <hr>
         </div>

@@ -27,9 +27,3 @@
 .btn-upload {
     margin: 10px 0;
 }
-
-@media print {
-    .no-print {
-        display: none;
-    }
-}
