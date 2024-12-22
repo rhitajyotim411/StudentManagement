@@ -29,7 +29,19 @@
             <li class="nav-item">
               <a class="nav-link" href="./students.php">Class List</a>
             </li>
-          <?php } ?>
+          <?php } elseif (
+            $currentPage === 'daily_att'
+            || $currentPage === 'mon_att'
+          ) {
+            ?>
+            <li class="nav-item">
+              <a class="nav-link" href="./daily_att.php">Daily</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./mon_att.php">Montly</a>
+            </li>
+          <?php }
+          ?>
         </ul>
       </div>
     </div>

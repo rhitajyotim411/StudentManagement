@@ -15,7 +15,19 @@ td.current-unpaid {
     color: black;
 }
 
-.fee-toggle-btn {
+td.present {
+    background-color: #90EE90 !important;
+    /* Green for present */
+    color: white;
+}
+
+td.absent {
+    background-color: #FFB6C6 !important;
+    /* Red for absent */
+    color: white;
+}
+
+.tick-toggle-btn {
     background-color: white;
     color: inherit;
     /* Use the inherited text color */
@@ -27,10 +39,18 @@ td.current-unpaid {
     cursor: pointer;
 }
 
-.fee-toggle-btn.paid {
+.tick-toggle-btn.paid {
     color: red;
 }
 
-.fee-toggle-btn.unpaid {
+.tick-toggle-btn.unpaid {
+    color: green;
+}
+
+.tick-toggle-btn.present {
+    color: red;
+}
+
+.tick-toggle-btn.absent {
     color: green;
 }

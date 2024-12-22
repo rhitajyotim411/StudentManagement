@@ -16,7 +16,7 @@ session_start();
     <!-- CSS -->
     <link href="../style/main.css" rel="stylesheet">
     <link href="../style/table.css" rel="stylesheet">
-    <link href="../style/fees.css" rel="stylesheet">
+    <link href="../style/tick.css" rel="stylesheet">
 </head>
 
 <body>
@@ -46,7 +46,7 @@ session_start();
                     ':uid' => $_POST['uid']
                 ]);
 
-                header("Location: {$_SERVER['PHP_SELF']}?year={$_POST['year']}&class={$_POST['class']}&edit_month={$_POST['month']}");
+                header("Location: {$_SERVER['PHP_SELF']}?year={$_POST['year']}&class={$_POST['class']}");
                 exit();
             } catch (PDOException $e) {
                 echo "Error updating fee status: " . $e->getMessage();
@@ -57,7 +57,6 @@ session_start();
         $current_month = date('n');
         $selected_year = isset($_GET['year']) ? $_GET['year'] : $current_year;
         $selected_class = isset($_GET['class']) ? $_GET['class'] : 'Nursery';
-        $active_month = isset($_GET['edit_month']) ? $_GET['edit_month'] : $current_month;
 
         $years = range($current_year - 2, $current_year);
         $classes = ['Nursery', 'KG-I', 'KG-II', 'S-I', 'S-II', 'S-III', 'S-IV'];
@@ -147,7 +146,7 @@ session_start();
                                                 <input type="hidden" name="class" value="<?= $selected_class ?>">
                                                 <input type="hidden" name="fee_action" value="<?= $fee_paid ? 'delete' : 'add' ?>">
                                                 <button type="submit"
-                                                    class="btn p-0 fee-toggle-btn <?= $fee_paid ? 'paid' : 'unpaid' ?>">
+                                                    class="btn p-0 tick-toggle-btn <?= $fee_paid ? 'paid' : 'unpaid' ?>">
                                                     <?= $fee_paid ? '❌' : '✔️' ?>
                                                 </button>
 
