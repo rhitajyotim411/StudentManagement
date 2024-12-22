@@ -46,7 +46,7 @@ session_start();
         $stmt = $conn->query("SELECT UID from {$tbname} where class='{$class}' and rollno='{$rollno}'");
         $data = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($stmt->rowCount() > 0) {
+        if ($stmt->rowCount() > 0 && $data['UID'] != $uid) {
             echo "<h5>Student with roll no. {$rollno} already registered in class {$class}</h5>";
         } else {
 
