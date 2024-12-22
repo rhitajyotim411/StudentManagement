@@ -73,6 +73,11 @@ session_start();
                     <button type="submit" class="btn btn-danger">Clear data</button>
                 </form>
 
+                <form action="reinstate.php" method="POST" onsubmit="return confirmReinstate();">
+                    <input type="hidden" name="uid" value="<?php echo $student['UID']; ?>">
+                    <button type="submit" class="btn btn-warning">Reinstate</button>
+                </form>
+
                 <form action="terminate.php" method="POST">
                     <button type="submit" class="btn btn-primary">Terminated Students</button>
                 </form>
@@ -83,6 +88,10 @@ session_start();
     <script>
         function confirmDelete() {
             return confirm("Are you sure you want to clear data of this student?");
+        }
+
+        function confirmReinstate() {
+            return confirm("Are you sure you want to reinstate this student?");
         }
     </script>
 </body>

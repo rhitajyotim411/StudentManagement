@@ -41,7 +41,7 @@ session_start();
         </form>
 
         <?php
-        $stmt = $conn->query("SELECT UID, RollNo, Name FROM $tbname where class='$class'");
+        $stmt = $conn->query("SELECT UID, RollNo, Name FROM $tbname where class='$class' ORDER BY RollNo");
 
         if ($stmt->rowCount() < 1) {
             die("<p>No students found<br></p>");

@@ -65,6 +65,9 @@ session_start();
         ?>
 
         <h2>Fee Details for <?php echo "{$selected_class}, {$selected_year}" ?></h2>
+        <div class="d-flex justify-content-center">
+            <hr>
+        </div>
 
         <!-- Filter Form - remains the same -->
         <form method="GET" class="mb-4">
