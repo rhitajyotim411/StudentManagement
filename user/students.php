@@ -32,6 +32,12 @@ session_start();
 
             <h2 class="mb-3">Class List</h2>
 
+            <div class="d-flex justify-content-center mb-3">
+                <form action="promote.php" method="POST" onsubmit="return confirmPromote();">
+                    <button type="submit" class="btn btn-warning">Promote all students</button>
+                </form>
+            </div>
+
             <!-- Nursery -->
             <div class="col-md-4 col-sm-6 col-12 mb-4">
                 <div class="card h-100">
@@ -128,7 +134,7 @@ session_start();
                 <div class="card h-100">
                     <div class="card-body user-card d-flex flex-column align-items-center justify-content-center">
                         <h5 class="card-title">Alumni</h5>
-                        <form action="#" method="POST">
+                        <form action="alumni.php" method="POST">
                             <input type="hidden" name="class" value="Alumni">
                             <button type="submit" class="btn btn-primary">View</button>
                         </form>
@@ -150,6 +156,12 @@ session_start();
             </div>
         </div>
     </div>
+
+    <script>
+        function confirmPromote() {
+            return confirm("Are you sure you want to PROMOTE ALL student?");
+        }
+    </script>
 </body>
 
 </html>

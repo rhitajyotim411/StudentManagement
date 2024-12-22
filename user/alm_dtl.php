@@ -8,7 +8,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terminated student details</title>
+    <title>Alumni details</title>
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -31,7 +31,7 @@ session_start();
 
         require_once '../inc/connect.php';
 
-        $tbname = "stu_ter";
+        $tbname = "alumni";
         $uid = $_POST["stu_id"];
 
         $stmt = $conn->query("SELECT * FROM $tbname WHERE uid='$uid'");
@@ -45,8 +45,6 @@ session_start();
                         <ul class="list-group list-group-flush text-start">
                             <li class="list-group-item"><strong>Year:</strong>
                                 <?php echo htmlspecialchars($student['Year']); ?></li>
-                            <li class="list-group-item"><strong>Class:</strong>
-                                <?php echo htmlspecialchars($student['Class']); ?></li>
                             <li class="list-group-item"><strong>Roll No.:</strong>
                                 <?php echo htmlspecialchars($student['RollNo']); ?></li>
                             <li class="list-group-item"><strong>Name:</strong>
@@ -73,8 +71,8 @@ session_start();
                     <button type="submit" class="btn btn-danger">Clear data</button>
                 </form>
 
-                <form action="terminate.php" method="POST">
-                    <button type="submit" class="btn btn-primary">Terminated Students</button>
+                <form action="alumni.php" method="POST">
+                    <button type="submit" class="btn btn-primary">Alumni List</button>
                 </form>
             </div>
         </div>
@@ -82,7 +80,7 @@ session_start();
 
     <script>
         function confirmDelete() {
-            return confirm("Are you sure you want to clear data of this student?");
+            return confirm("Are you sure you want to clear data of this alumni?");
         }
     </script>
 </body>

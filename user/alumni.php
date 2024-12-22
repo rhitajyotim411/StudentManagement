@@ -8,7 +8,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terminated Students</title>
+    <title>Alumni</title>
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -31,19 +31,15 @@ session_start();
 
         require_once '../inc/connect.php';
 
-        $tbname = "stu_ter";
-        $stmt = $conn->query("
-                SELECT UID, Year, Class, RollNo, Name
-                FROM $tbname
-                ORDER BY Year DESC, FIELD(Class, 'Nursery', 'KG-I', 'KG-II', 'S-I', 'S-II', 'S-III', 'S-IV')
-                ");
+        $tbname = "alumni";
+        $stmt = $conn->query("SELECT UID, Year, RollNo, Name FROM $tbname ORDER BY Year DESC, RollNo");
 
         if ($stmt->rowCount() < 1) {
             die("<p>No students found<br></p>");
         }
         ?>
 
-        <h2>Terminated Student List</h2>
+        <h2>Alumni List</h2>
         <div class="d-flex justify-content-center">
             <hr>
         </div>
@@ -53,7 +49,6 @@ session_start();
                 <table>
                     <tr>
                         <th>Year</th>
-                        <th>Class</th>
                         <th>Roll No.</th>
                         <th>Name</th>
                         <th><!--filer--></th>
@@ -62,11 +57,10 @@ session_start();
                     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                         echo "<tr>";
                         echo "<td>{$row['Year']}</td>";
-                        echo "<td>{$row['Class']}</td>";
                         echo "<td>{$row['RollNo']}</td>";
                         echo "<td>{$row['Name']}</td>";
                         echo "<td>";
-                        echo "<form action=\"./ter_dtl.php\" method=\"post\">";
+                        echo "<form action=\"./alm_dtl.php\" method=\"post\">";
                         echo "<input type=\"hidden\" name=\"stu_id\" value={$row['UID']}>";
                         echo "<input type=\"submit\" name=\"submit\" class=\"btn btn-primary\" value=\"View\">";
                         echo "</form>";

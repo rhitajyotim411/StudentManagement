@@ -8,7 +8,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Termination</title>
+    <title>Student Deletion</title>
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -30,7 +30,7 @@ session_start();
 
         require_once '../inc/connect.php';
 
-        $tbname = "stu_ter";
+        $tbname = $_POST['tbname'];
         $uid = $_POST['uid'];
         try {
             // Delete the student record
@@ -43,12 +43,24 @@ session_start();
         }
 
         echo "<h5>Student record successfully cleared</h5>";
+
+
+
+        if ($tbname === 'stu_ter') {
+            ?>
+
+            <form class="mt-3" action="terminate.php" method="POST">
+                <button type="submit" class="btn btn-primary">Terminated Students</button>
+            </form>
+            <?php
+        } elseif ($tbname === 'alumni') {
+            ?>
+            <form class="mt-3" action="alumni.php" method="POST">
+                <button type="submit" class="btn btn-primary">Alumni List</button>
+            </form>
+            <?php
+        }
         ?>
-
-
-        <form class="mt-3" action="terminate.php" method="POST">
-            <button type="submit" class="btn btn-primary">Terminated Students</button>
-        </form>
 
     </div>
 </body>
