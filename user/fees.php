@@ -58,7 +58,7 @@ session_start();
         $selected_year = isset($_GET['year']) ? $_GET['year'] : $current_year;
         $selected_class = isset($_GET['class']) ? $_GET['class'] : 'Nursery';
 
-        $years = range($current_year - 2, $current_year);
+        $years = range($current_year - 5, $current_year);
         $classes = ['Nursery', 'KG-I', 'KG-II', 'S-I', 'S-II', 'S-III', 'S-IV'];
         $months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         ?>
