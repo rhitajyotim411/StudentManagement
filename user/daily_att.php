@@ -59,7 +59,7 @@ session_start();
         }
         ?>
 
-        <h2>Attendance for <?= htmlspecialchars($selected_class) ?></h2>
+        <h2>Daily attendance for <?= htmlspecialchars($selected_class) ?></h2>
         <div class="d-flex justify-content-center">
             <hr>
         </div>

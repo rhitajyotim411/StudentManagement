@@ -1,0 +1,32 @@
+table th,
+table td {
+    width: 80px;
+    text-align: center;
+    vertical-align: middle;
+    transition: background-color 0.3s ease;
+}
+
+table th {
+    font-weight: bold;
+}
+
+.legend {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+    gap: 10px;
+}
+
+.legend-gradient {
+    width: 200px;
+    height: 20px;
+    background: linear-gradient(to right, #FFB6C6, #90EE90);
+    border: 1px solid #ccc;
+}
+
+.legend-labels {
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+}
