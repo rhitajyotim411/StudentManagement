@@ -50,7 +50,7 @@ session_start();
                         <div class="card-body user-card d-flex flex-column align-items-center justify-content-center">
                             <h5 class="card-title">Fees Collection</h5>
                             <p class="card-text">View monthly fees recorded</p>
-                            <a href="#" class="btn btn-primary">View</a>
+                            <a href="./fees.php" class="btn btn-primary">View</a>
                         </div>
                     </div>
                 </div>

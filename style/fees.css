@@ -1,0 +1,36 @@
+td.paid {
+    background-color: #90EE90 !important;
+    /* Green */
+    color: white;
+}
+
+td.unpaid {
+    background-color: #FFB6C6 !important;
+    /* Red */
+    color: white;
+}
+
+td.current-unpaid {
+    background-color: transparent !important;
+    color: black;
+}
+
+.fee-toggle-btn {
+    background-color: white;
+    color: inherit;
+    /* Use the inherited text color */
+    border-radius: 3px;
+    padding: 0;
+    /* Reset padding */
+    border: none;
+    /* Remove default border */
+    cursor: pointer;
+}
+
+.fee-toggle-btn.paid {
+    color: red;
+}
+
+.fee-toggle-btn.unpaid {
+    color: green;
+}
