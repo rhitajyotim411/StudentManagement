@@ -22,6 +22,8 @@
             $currentPage === 'students_db'
             || $currentPage === 'stu_reg'
             || $currentPage === 'stu_dtl'
+            || $currentPage === 'alumni'
+            || $currentPage === 'terminate'
           ) {
             ?>
             <li class="nav-item">

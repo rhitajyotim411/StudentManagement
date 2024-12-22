@@ -31,7 +31,7 @@ session_start();
 
         require_once '../inc/connect.php';
 
-        $tbname = "stu_dtl";
+        $tbname = "stu_ter";
         $uid = $_POST["stu_id"];
 
         $stmt = $conn->query("SELECT * FROM $tbname WHERE uid='$uid'");
@@ -43,6 +43,8 @@ session_start();
                     <div class="card-body">
                         <h4 class="card-title mb-4">Student Details</h4>
                         <ul class="list-group list-group-flush text-start">
+                            <li class="list-group-item"><strong>Year:</strong>
+                                <?php echo htmlspecialchars($student['Year']); ?></li>
                             <li class="list-group-item"><strong>Class:</strong>
                                 <?php echo htmlspecialchars($student['Class']); ?></li>
                             <li class="list-group-item"><strong>Roll No.:</strong>
@@ -65,46 +67,14 @@ session_start();
             </div>
 
             <div class="d-flex justify-content-center gap-2 mt-3">
-                <form action="stu_ter.php" method="POST" onsubmit="return confirmDelete();">
+                <form action="stu_del.php" method="POST" onsubmit="return confirmDelete();">
                     <input type="hidden" name="uid" value="<?php echo $student['UID']; ?>">
+                    <button type="submit" class="btn btn-danger">Clear data</button>
+                </form>
+
+                <form action="terminate.php" method="POST">
                     <input type="hidden" name="class" value="<?php echo $student['Class']; ?>">
-                    <button type="submit" class="btn btn-danger">Terminate</button>
-                </form>
-
-                <form action="stu_updt.php" method="post">
-                    <input type="hidden" name="uid" value="<?php echo htmlspecialchars($student['UID']); ?>">
-                    <input type="hidden" name="class" value="<?php echo htmlspecialchars($student['Class']); ?>">
-                    <input type="hidden" name="rollno" value="<?php echo htmlspecialchars($student['RollNo']); ?>">
-                    <input type="hidden" name="name" value="<?php echo htmlspecialchars($student['Name']); ?>">
-                    <input type="hidden" name="guardian" value="<?php echo htmlspecialchars($student['Guardian']); ?>">
-                    <input type="hidden" name="dob" value="<?php echo htmlspecialchars($student['DOB']); ?>">
-                    <input type="hidden" name="address" value="<?php echo htmlspecialchars($student['Address']); ?>">
-                    <input type="hidden" name="phone" value="<?php echo htmlspecialchars($student['Phone']); ?>">
-                    <input type="hidden" name="email" value="<?php echo htmlspecialchars($student['Email']); ?>">
-                    <button type="submit" class="btn btn-warning">Edit details</button>
-                </form>
-
-                <form action="students_db.php" method="POST">
-                    <input type="hidden" name="class" value="<?php echo $student['Class']; ?>">
-                    <button type="submit" class="btn btn-primary">Student List</button>
-                </form>
-
-                <form action="ID_gen.php" method="post">
-                    <input type="hidden" name="class" value="<?php echo htmlspecialchars($student['Class']); ?>">
-                    <input type="hidden" name="rollno" value="<?php echo htmlspecialchars($student['RollNo']); ?>">
-                    <input type="hidden" name="name" value="<?php echo htmlspecialchars($student['Name']); ?>">
-                    <input type="hidden" name="dob" value="<?php echo htmlspecialchars($student['DOB']); ?>">
-                    <input type="hidden" name="phone" value="<?php echo htmlspecialchars($student['Phone']); ?>">
-                    <button type="submit" class="btn btn-success">Generate ID</button>
-                </form>
-
-                <form action="Rprt_gen.php" method="post">
-                    <input type="hidden" name="class" value="<?php echo htmlspecialchars($student['Class']); ?>">
-                    <input type="hidden" name="rollno" value="<?php echo htmlspecialchars($student['RollNo']); ?>">
-                    <input type="hidden" name="name" value="<?php echo htmlspecialchars($student['Name']); ?>">
-                    <input type="hidden" name="guardian" value="<?php echo htmlspecialchars($student['Guardian']); ?>">
-                    <input type="hidden" name="dob" value="<?php echo htmlspecialchars($student['DOB']); ?>">
-                    <button type="submit" class="btn btn-info">Generate Report</button>
+                    <button type="submit" class="btn btn-primary">Terminated Students</button>
                 </form>
             </div>
         </div>
@@ -112,7 +82,7 @@ session_start();
 
     <script>
         function confirmDelete() {
-            return confirm("Are you sure you want to terminate this student?");
+            return confirm("Are you sure you want to clear data of this student?");
         }
     </script>
 </body>

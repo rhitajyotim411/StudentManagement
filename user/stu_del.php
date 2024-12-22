@@ -30,10 +30,8 @@ session_start();
 
         require_once '../inc/connect.php';
 
-        $tbname = "stu_dtl";
+        $tbname = "stu_ter";
         $uid = $_POST['uid'];
-        $class = $_POST['class'];
-
         try {
             // Delete the student record
             $sql = "DELETE FROM {$tbname} WHERE uid = :uid";
@@ -44,13 +42,12 @@ session_start();
             die("<br><a class=\"ref\" href='../index.php'>Homepage</a>");
         }
 
-        echo "<h5>Student record successfully terminated</h5>";
+        echo "<h5>Student record successfully cleared</h5>";
         ?>
 
 
-        <form class="mt-3" action="students_db.php" method="POST">
-            <input type="hidden" name="class" value="<?php echo $class; ?>">
-            <button type="submit" class="btn btn-primary">Student List</button>
+        <form class="mt-3" action="terminate.php" method="POST">
+            <button type="submit" class="btn btn-primary">Terminated Students</button>
         </form>
 
     </div>

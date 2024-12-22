@@ -123,6 +123,31 @@ session_start();
                 </div>
             </div>
 
+            <!-- Alumni -->
+            <div class="col-md-4 col-sm-6 col-12 mb-4">
+                <div class="card h-100">
+                    <div class="card-body user-card d-flex flex-column align-items-center justify-content-center">
+                        <h5 class="card-title">Alumni</h5>
+                        <form action="#" method="POST">
+                            <input type="hidden" name="class" value="Alumni">
+                            <button type="submit" class="btn btn-primary">View</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Terminated -->
+            <div class="col-md-4 col-sm-6 col-12 mb-4">
+                <div class="card h-100">
+                    <div class="card-body user-card d-flex flex-column align-items-center justify-content-center">
+                        <h5 class="card-title">Terminated</h5>
+                        <form action="terminate.php" method="POST">
+                            <input type="hidden" name="class" value="Terminated">
+                            <button type="submit" class="btn btn-primary">View</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
