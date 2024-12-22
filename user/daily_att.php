@@ -39,15 +39,16 @@ session_start();
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['attendance_action'])) {
             try {
                 if ($_POST['attendance_action'] === 'mark') {
-                    $query = "INSERT INTO $tbname (date, uid) VALUES (:date, :uid)";
+                    $query = "INSERT INTO $tbname (date, uid, class) VALUES (:date, :uid, :class)";
                 } else {
-                    $query = "DELETE FROM $tbname WHERE date = :date AND uid = :uid";
+                    $query = "DELETE FROM $tbname WHERE date = :date AND uid = :uid AND class = :class";
                 }
 
                 $stmt = $conn->prepare($query);
                 $stmt->execute([
                     ':date' => $current_date,
-                    ':uid' => $_POST['uid']
+                    ':uid' => $_POST['uid'],
+                    ':class' => $selected_class
                 ]);
 
                 header("Location: {$_SERVER['PHP_SELF']}?class={$selected_class}");
@@ -96,11 +97,12 @@ session_start();
                         $stmt->execute([':class' => $selected_class]);
 
                         while ($student = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                            $query = "SELECT 1 FROM $tbname WHERE date = :date AND uid = :uid";
+                            $query = "SELECT 1 FROM $tbname WHERE date = :date AND uid = :uid AND class = :class";
                             $attendance_stmt = $conn->prepare($query);
                             $attendance_stmt->execute([
                                 ':date' => $current_date,
-                                ':uid' => $student['uid']
+                                ':uid' => $student['uid'],
+                                ':class' => $selected_class
                             ]);
                             $attendance_marked = $attendance_stmt->rowCount() > 0;
                             ?>
