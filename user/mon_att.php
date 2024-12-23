@@ -79,13 +79,19 @@ session_start();
                         <?php foreach (range(1, 12) as $month): ?>
                             <th><?= date('M', mktime(0, 0, 0, $month, 1)) ?></th>
                         <?php endforeach; ?>
+                        <th>Year Total</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                     try {
+                        $monthly_totals = array_fill(1, 12, 0);
+                        $year_total = 0;
+
                         foreach ($classes as $class) {
                             echo "<tr><td><strong>" . htmlspecialchars($class) . "</strong></td>";
+                            $class_total = 0;
+
                             foreach (range(1, 12) as $month) {
                                 $query = "SELECT COUNT(*) AS total FROM $tbname
                                           WHERE class = :class
@@ -98,13 +104,26 @@ session_start();
                                     ':month' => $month
                                 ]);
                                 $total_attendance = $stmt->fetch(PDO::FETCH_ASSOC)['total'] ?? 0;
+
+                                $monthly_totals[$month] += $total_attendance;
+                                $class_total += $total_attendance;
+
                                 echo "<td data-value='" . $total_attendance . "' data-max='" . $global_max_attendance . "'>"
                                     . htmlspecialchars($total_attendance) . "</td>";
                             }
-                            echo "</tr>";
+
+                            $year_total += $class_total;
+                            echo "<td class='year-total'>" . htmlspecialchars($class_total) . "</td></tr>";
                         }
+
+                        // Add monthly totals row
+                        echo "<tr class='table-secondary'><td><strong>Monthly Total</strong></td>";
+                        foreach ($monthly_totals as $total) {
+                            echo "<td><strong>" . htmlspecialchars($total) . "</strong></td>";
+                        }
+                        echo "<td><strong>" . htmlspecialchars($year_total) . "</strong></td></tr>";
                     } catch (PDOException $e) {
-                        echo "<tr><td colspan='13' style='color: red;'>Error fetching attendance: "
+                        echo "<tr><td colspan='14' style='color: red;'>Error fetching attendance: "
                             . htmlspecialchars($e->getMessage()) . "</td></tr>";
                     }
                     ?>
@@ -121,25 +140,25 @@ session_start();
     </div>
 
     <script>
-        // Function to interpolate between two colors
-        function interpolateColor(color1, color2, factor) {
-            const r1 = parseInt(color1.slice(1, 3), 16);
-            const g1 = parseInt(color1.slice(3, 5), 16);
-            const b1 = parseInt(color1.slice(5, 7), 16);
-
-            const r2 = parseInt(color2.slice(1, 3), 16);
-            const g2 = parseInt(color2.slice(3, 5), 16);
-            const b2 = parseInt(color2.slice(5, 7), 16);
-
-            const r = Math.round(r1 + (r2 - r1) * factor);
-            const g = Math.round(g1 + (g2 - g1) * factor);
-            const b = Math.round(b1 + (b2 - b1) * factor);
-
-            return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
-        }
-
-        // Apply colors to cells
         document.addEventListener('DOMContentLoaded', function () {
+            // Function to interpolate between two colors
+            function interpolateColor(color1, color2, factor) {
+                const r1 = parseInt(color1.slice(1, 3), 16);
+                const g1 = parseInt(color1.slice(3, 5), 16);
+                const b1 = parseInt(color1.slice(5, 7), 16);
+
+                const r2 = parseInt(color2.slice(1, 3), 16);
+                const g2 = parseInt(color2.slice(3, 5), 16);
+                const b2 = parseInt(color2.slice(5, 7), 16);
+
+                const r = Math.round(r1 + (r2 - r1) * factor);
+                const g = Math.round(g1 + (g2 - g1) * factor);
+                const b = Math.round(b1 + (b2 - b1) * factor);
+
+                return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
+            }
+
+            // Apply colors to cells
             const cells = document.querySelectorAll('td[data-value]');
             const lowColor = '#FFB6C6';  // Pink
             const highColor = '#90EE90'; // Light green
@@ -151,10 +170,7 @@ session_start();
 
                 const backgroundColor = interpolateColor(lowColor, highColor, factor);
                 cell.style.backgroundColor = backgroundColor;
-
-                // Set text color based on background brightness
-                const brightness = (factor > 0.5) ? 'dark' : 'light';
-                cell.style.color = brightness === 'dark' ? 'black' : 'black';
+                cell.style.color = 'black';
             });
         });
     </script>
