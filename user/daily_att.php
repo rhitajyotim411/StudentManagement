@@ -39,7 +39,21 @@ session_start();
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['attendance_action'])) {
             try {
                 if ($_POST['attendance_action'] === 'mark') {
-                    $query = "INSERT INTO $tbname (date, uid, class) VALUES (:date, :uid, :class)";
+                    // Check if record exists for the same date and UID
+                    $check_query = "SELECT 1 FROM $tbname WHERE date = :date AND uid = :uid";
+                    $check_stmt = $conn->prepare($check_query);
+                    $check_stmt->execute([
+                        ':date' => $current_date,
+                        ':uid' => $_POST['uid']
+                    ]);
+
+                    if ($check_stmt->rowCount() > 0) {
+                        // Update existing record
+                        $query = "UPDATE $tbname SET class = :class WHERE date = :date AND uid = :uid";
+                    } else {
+                        // Insert new record
+                        $query = "INSERT INTO $tbname (date, uid, class) VALUES (:date, :uid, :class)";
+                    }
                 } else {
                     $query = "DELETE FROM $tbname WHERE date = :date AND uid = :uid AND class = :class";
                 }
