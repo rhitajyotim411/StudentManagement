@@ -87,7 +87,12 @@ session_start();
 
     <script>
         function confirmDelete() {
-            return confirm("Are you sure you want to clear data of this student?");
+            return confirm(
+                "Are you sure you want to clear data of this student?\n\n" +
+                "You'll lose the following data:\n" +
+                "- Attendance record\n" +
+                "- Fees record"
+            );
         }
 
         function confirmReinstate() {

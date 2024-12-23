@@ -31,20 +31,32 @@ session_start();
         require_once '../inc/connect.php';
 
         $tbname = $_POST['tbname'];
+        $tbfees = "fees";
+        $tbatt = "attdnc";
         $uid = $_POST['uid'];
+
         try {
             // Delete the student record
             $sql = "DELETE FROM {$tbname} WHERE uid = :uid";
             $stmt = $conn->prepare($sql);
             $stmt->execute([':uid' => $uid]);
+
+            // Delete the fees record
+            $sql = "DELETE FROM {$tbfees} WHERE uid = :uid";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute([':uid' => $uid]);
+
+            // Delete the attendance record
+            $sql = "DELETE FROM {$tbatt} WHERE uid = :uid";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute([':uid' => $uid]);
+
         } catch (PDOException $e) {
             echo "Deletion failed: " . $e->getMessage();
             die("<br><a class=\"ref\" href='../index.php'>Homepage</a>");
         }
 
         echo "<h5>Student record successfully cleared</h5>";
-
-
 
         if ($tbname === 'stu_ter') {
             ?>
