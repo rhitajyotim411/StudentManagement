@@ -33,10 +33,13 @@ session_start();
 
         $tbname = "tch_dtl";
         $uid = $_POST["tch_id"];
+        $status = "";
 
         $stmt = $conn->query("SELECT * FROM $tbname WHERE uid='$uid'");
         $student = $stmt->fetch(PDO::FETCH_ASSOC);
+        $status = $student['Status'];
         ?>
+
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card shadow">
@@ -58,33 +61,77 @@ session_start();
                 </div>
             </div>
 
-            <div class="d-flex justify-content-center gap-2 mt-3">
-                <form action="tch_mng.php" method="POST" onsubmit="return confirmDelete();">
-                    <input type="hidden" name="uid" value="<?php echo $student['UID']; ?>">
-                    <button type="submit" class="btn btn-danger">Terminate</button>
-                </form>
+            <?php
+            if ($status === 'active') {
+                ?>
 
-                <form action="tch_updt.php" method="post">
-                    <input type="hidden" name="uid" value="<?php echo htmlspecialchars($student['UID']); ?>">
-                    <input type="hidden" name="name" value="<?php echo htmlspecialchars($student['Name']); ?>">
-                    <input type="hidden" name="dob" value="<?php echo htmlspecialchars($student['DOB']); ?>">
-                    <input type="hidden" name="address" value="<?php echo htmlspecialchars($student['Address']); ?>">
-                    <input type="hidden" name="phone" value="<?php echo htmlspecialchars($student['Phone']); ?>">
-                    <input type="hidden" name="email" value="<?php echo htmlspecialchars($student['Email']); ?>">
-                    <button type="submit" class="btn btn-warning">Edit details</button>
-                </form>
+                <div class="d-flex justify-content-center gap-2 mt-3">
+                    <form action="tch_mng.php" method="POST" onsubmit="return confirmDelete();">
+                        <input type="hidden" name="uid" value="<?php echo $student['UID']; ?>">
+                        <input type="hidden" name="action" value="terminate">
+                        <button type="submit" class="btn btn-danger">Terminate</button>
+                    </form>
 
-                <form action="teachers_db.php" method="POST">
-                    <input type="hidden" name="status" value="active">
-                    <button type="submit" class="btn btn-primary">Active Teachers</button>
-                </form>
-            </div>
+                    <form action="tch_updt.php" method="post">
+                        <input type="hidden" name="uid" value="<?php echo htmlspecialchars($student['UID']); ?>">
+                        <input type="hidden" name="name" value="<?php echo htmlspecialchars($student['Name']); ?>">
+                        <input type="hidden" name="dob" value="<?php echo htmlspecialchars($student['DOB']); ?>">
+                        <input type="hidden" name="address" value="<?php echo htmlspecialchars($student['Address']); ?>">
+                        <input type="hidden" name="phone" value="<?php echo htmlspecialchars($student['Phone']); ?>">
+                        <input type="hidden" name="email" value="<?php echo htmlspecialchars($student['Email']); ?>">
+                        <button type="submit" class="btn btn-warning">Edit details</button>
+                    </form>
+
+                    <form action="teachers_db.php" method="POST">
+                        <input type="hidden" name="status" value="active">
+                        <button type="submit" class="btn btn-primary">Active Teachers</button>
+                    </form>
+                </div>
+
+                <?php
+            } elseif ($status === 'former') {
+                ?>
+
+                <div class="d-flex justify-content-center gap-2 mt-3">
+                    <form action="tch_mng.php" method="POST" onsubmit="return confirmClear();">
+                        <input type="hidden" name="uid" value="<?php echo $student['UID']; ?>">
+                        <input type="hidden" name="action" value="clear">
+                        <button type="submit" class="btn btn-danger">Clear Data</button>
+                    </form>
+
+                    <form action="tch_mng.php" method="POST" onsubmit="return confirmReinstate();">
+                        <input type="hidden" name="uid" value="<?php echo $student['UID']; ?>">
+                        <input type="hidden" name="action" value="reinstate">
+                        <button type="submit" class="btn btn-warning">Reinstate</button>
+                    </form>
+
+                    <form action="teachers_db.php" method="POST">
+                        <input type="hidden" name="status" value="former">
+                        <button type="submit" class="btn btn-primary">Former Teachers</button>
+                    </form>
+                </div>
+
+                <?php
+            }
+            ?>
         </div>
     </div>
 
     <script>
         function confirmDelete() {
             return confirm("Are you sure you want to terminate this teacher?");
+        }
+
+        function confirmClear() {
+            return confirm(
+                "Are you sure you want to clear data of this teacher?\n\n" +
+                "You'll lose the following data:\n" +
+                "- Attendance record"
+            );
+        }
+
+        function confirmReinstate() {
+            return confirm("Are you sure you want to reinstate this teacher?");
         }
     </script>
 </body>

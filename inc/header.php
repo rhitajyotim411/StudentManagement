@@ -22,6 +22,7 @@
             $currentPage === 'students_db'
             || $currentPage === 'stu_reg'
             || $currentPage === 'stu_dtl'
+            || $currentPage === 'stu_updt'
             || $currentPage === 'alumni'
             || $currentPage === 'terminate'
           ) {
@@ -44,6 +45,7 @@
             $currentPage === 'teachers_db'
             || $currentPage === 'tch_reg'
             || $currentPage === 'tch_dtl'
+            || $currentPage === 'tch_updt'
           ) {
             ?>
             <li class="nav-item">
