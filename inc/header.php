@@ -22,6 +22,7 @@
             $currentPage === 'students_db'
             || $currentPage === 'stu_reg'
             || $currentPage === 'stu_dtl'
+            || $currentPage === 'stu_rec'
             || $currentPage === 'stu_updt'
             || $currentPage === 'alumni'
             || $currentPage === 'terminate'
