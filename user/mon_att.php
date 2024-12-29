@@ -27,7 +27,7 @@ session_start();
 
         require_once '../inc/connect.php';
 
-        $tbname = "attdnc";
+        $tbname = "stu_att";
         $classes = ['Nursery', 'KG-I', 'KG-II', 'S-I', 'S-II', 'S-III', 'S-IV'];
         $current_year = date('Y');
         $selected_year = $_GET['year'] ?? $current_year;

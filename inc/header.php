@@ -40,6 +40,13 @@
             <li class="nav-item">
               <a class="nav-link" href="./mon_att.php">Montly</a>
             </li>
+          <?php } elseif (
+            $currentPage === 'teachers_db'
+          ) {
+            ?>
+            <li class="nav-item">
+              <a class="nav-link" href="./teachers.php">Teacher List</a>
+            </li>
           <?php }
           ?>
         </ul>

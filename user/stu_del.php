@@ -32,7 +32,7 @@ session_start();
 
         $tbname = $_POST['tbname'];
         $tbfees = "fees";
-        $tbatt = "attdnc";
+        $tbatt = "stu_att";
         $uid = $_POST['uid'];
 
         try {

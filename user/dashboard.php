@@ -32,7 +32,7 @@ session_start();
 
             <h2>School Name</h2>
 
-            <div class="row row-cols-1 row-cols-md-2 g-3">
+            <div class="row row-cols-1 row-cols-md-3 g-3 justify-content-center ">
                 <!-- Card 1 -->
                 <div class="col">
                     <div class="card h-100">
@@ -48,9 +48,9 @@ session_start();
                 <div class="col">
                     <div class="card h-100">
                         <div class="card-body user-card d-flex flex-column align-items-center justify-content-center">
-                            <h5 class="card-title">Fees Collection</h5>
-                            <p class="card-text">View monthly fees recorded</p>
-                            <a href="./fees.php" class="btn btn-primary">View</a>
+                            <h5 class="card-title">Teacher Details</h5>
+                            <p class="card-text">Fetch teacher details</p>
+                            <a href="./teachers.php" class="btn btn-primary">View</a>
                         </div>
                     </div>
                 </div>
@@ -60,7 +60,7 @@ session_start();
                     <div class="card h-100">
                         <div class="card-body user-card d-flex flex-column align-items-center justify-content-center">
                             <h5 class="card-title">Attendance</h5>
-                            <p class="card-text">View student attendance</p>
+                            <p class="card-text">View student and teacher attendance</p>
                             <a href="./attendance.php" class="btn btn-primary">View</a>
                         </div>
                     </div>
@@ -70,8 +70,19 @@ session_start();
                 <div class="col">
                     <div class="card h-100">
                         <div class="card-body user-card d-flex flex-column align-items-center justify-content-center">
+                            <h5 class="card-title">Fees Collection</h5>
+                            <p class="card-text">View monthly fees recorded</p>
+                            <a href="./fees.php" class="btn btn-primary">View</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-body user-card d-flex flex-column align-items-center justify-content-center">
                             <h5 class="card-title">Class Routines</h5>
-                            <p class="card-text">Students' and Teachers' class routines</p>
+                            <p class="card-text">View class-wise student routine</p>
                             <a href="#" class="btn btn-primary">View</a>
                         </div>
                     </div>

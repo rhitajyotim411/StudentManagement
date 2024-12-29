@@ -8,7 +8,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student List</title>
+    <title>Teacher List</title>
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -31,24 +31,25 @@ session_start();
 
         require_once '../inc/connect.php';
 
-        $tbname = "stu_dtl";
-        $class = $_POST["class"];
-        ?>
+        $tbname = "tch_dtl";
+        $status = $_POST["status"];
 
-        <form class="mb-3" action="stu_reg.php" method="post">
-            <input type="hidden" name="class" value="<?php echo $class ?>">
-            <input type="submit" name="submit" class="btn btn-primary" value="Register student">
-        </form>
+        if ($status === "active") {
+            ?>
 
-        <?php
-        $stmt = $conn->query("SELECT UID, RollNo, Name FROM $tbname where class='$class' ORDER BY RollNo");
+            <a href="./tch_reg.php" class="btn btn-primary">Register teacher</a>
+
+            <?php
+        }
+
+        $stmt = $conn->query("SELECT UID, Name FROM $tbname where Status='$status' ORDER BY Name");
 
         if ($stmt->rowCount() < 1) {
-            die("<p>No students found<br></p>");
+            die('<p class="mt-3">No teachers found<br></p>');
         }
         ?>
 
-        <h2>Student List for <?php echo $class ?></h2>
+        <h2><?php echo ucfirst($class) ?> Teacher List</h2>
         <div class="d-flex justify-content-center">
             <hr>
         </div>
@@ -57,20 +58,16 @@ session_start();
             <div class="overflow-auto">
                 <table>
                     <tr>
-                        <th>Roll No.</th>
                         <th>Name</th>
-                        <th>Class</th>
                         <th><!--filler--></th>
                     </tr>
                     <?php
                     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                         echo "<tr>";
-                        echo "<td>{$row['RollNo']}</td>";
                         echo "<td>{$row['Name']}</td>";
-                        echo "<td>{$class}</td>";
                         echo "<td>";
-                        echo "<form action=\"./stu_dtl.php\" method=\"post\">";
-                        echo "<input type=\"hidden\" name=\"stu_id\" value={$row['UID']}>";
+                        echo "<form action=\"./tch_dtl.php\" method=\"post\">";
+                        echo "<input type=\"hidden\" name=\"tch_id\" value={$row['UID']}>";
                         echo "<input type=\"submit\" name=\"submit\" class=\"btn btn-primary\" value=\"View\">";
                         echo "</form>";
                         echo "</td>";
