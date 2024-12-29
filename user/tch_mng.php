@@ -31,6 +31,7 @@ session_start();
         require_once '../inc/connect.php';
 
         $tbname = "tch_dtl";
+        $tbatt = "tch_att";
         $uid = $_POST['uid'];
         $action = $_POST['action'];
 
@@ -78,8 +79,13 @@ session_start();
         } elseif ($action === 'clear') {
 
             try {
-                // Delete the student record
+                // Delete the teacher record
                 $sql = "DELETE FROM {$tbname} WHERE uid = :uid";
+                $stmt = $conn->prepare($sql);
+                $stmt->execute([':uid' => $uid]);
+
+                // Delete the teacher attendance record
+                $sql = "DELETE FROM {$tbatt} WHERE uid = :uid";
                 $stmt = $conn->prepare($sql);
                 $stmt->execute([':uid' => $uid]);
 
