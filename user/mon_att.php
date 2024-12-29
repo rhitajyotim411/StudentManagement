@@ -59,7 +59,6 @@ session_start();
         <form method="GET" class="mb-4">
             <div class="row justify-content-center">
                 <div class="col-auto">
-                    <label for="year" class="form-label">Select Year:</label>
                     <select name="year" id="year" class="form-select" onchange="this.form.submit()">
                         <?php foreach ($year_range as $year): ?>
                             <option value="<?= htmlspecialchars($year) ?>" <?= $year == $selected_year ? 'selected' : '' ?>>
