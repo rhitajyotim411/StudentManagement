@@ -49,7 +49,7 @@ session_start();
         }
         ?>
 
-        <h2><?php echo ucfirst($class) ?> Teacher List</h2>
+        <h2 class="mt-3"><?php echo ucfirst($status) ?> Teacher List</h2>
         <div class="d-flex justify-content-center">
             <hr>
         </div>
