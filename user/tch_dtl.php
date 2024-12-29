@@ -36,8 +36,8 @@ session_start();
         $status = "";
 
         $stmt = $conn->query("SELECT * FROM $tbname WHERE uid='$uid'");
-        $student = $stmt->fetch(PDO::FETCH_ASSOC);
-        $status = $student['Status'];
+        $teacher = $stmt->fetch(PDO::FETCH_ASSOC);
+        $status = $teacher['Status'];
         ?>
 
         <div class="row justify-content-center">
@@ -47,15 +47,15 @@ session_start();
                         <h4 class="card-title mb-4">Teacher Details</h4>
                         <ul class="list-group list-group-flush text-start">
                             <li class="list-group-item"><strong>Name:</strong>
-                                <?php echo htmlspecialchars($student['Name']); ?></li>
+                                <?php echo htmlspecialchars($teacher['Name']); ?></li>
                             <li class="list-group-item"><strong>Date of Birth:</strong>
-                                <?php echo htmlspecialchars($student['DOB']); ?></li>
+                                <?php echo htmlspecialchars($teacher['DOB']); ?></li>
                             <li class="list-group-item"><strong>Address:</strong>
-                                <?php echo htmlspecialchars($student['Address']); ?></li>
+                                <?php echo htmlspecialchars($teacher['Address']); ?></li>
                             <li class="list-group-item"><strong>Phone No.:</strong>
-                                <?php echo htmlspecialchars($student['Phone']); ?></li>
+                                <?php echo htmlspecialchars($teacher['Phone']); ?></li>
                             <li class="list-group-item"><strong>Email:</strong>
-                                <?php echo htmlspecialchars($student['Email']); ?></li>
+                                <?php echo htmlspecialchars($teacher['Email']); ?></li>
                         </ul>
                     </div>
                 </div>
@@ -67,18 +67,18 @@ session_start();
 
                 <div class="d-flex justify-content-center gap-2 mt-3">
                     <form action="tch_mng.php" method="POST" onsubmit="return confirmDelete();">
-                        <input type="hidden" name="uid" value="<?php echo $student['UID']; ?>">
+                        <input type="hidden" name="uid" value="<?php echo $teacher['UID']; ?>">
                         <input type="hidden" name="action" value="terminate">
                         <button type="submit" class="btn btn-danger">Terminate</button>
                     </form>
 
                     <form action="tch_updt.php" method="post">
-                        <input type="hidden" name="uid" value="<?php echo htmlspecialchars($student['UID']); ?>">
-                        <input type="hidden" name="name" value="<?php echo htmlspecialchars($student['Name']); ?>">
-                        <input type="hidden" name="dob" value="<?php echo htmlspecialchars($student['DOB']); ?>">
-                        <input type="hidden" name="address" value="<?php echo htmlspecialchars($student['Address']); ?>">
-                        <input type="hidden" name="phone" value="<?php echo htmlspecialchars($student['Phone']); ?>">
-                        <input type="hidden" name="email" value="<?php echo htmlspecialchars($student['Email']); ?>">
+                        <input type="hidden" name="uid" value="<?php echo htmlspecialchars($teacher['UID']); ?>">
+                        <input type="hidden" name="name" value="<?php echo htmlspecialchars($teacher['Name']); ?>">
+                        <input type="hidden" name="dob" value="<?php echo htmlspecialchars($teacher['DOB']); ?>">
+                        <input type="hidden" name="address" value="<?php echo htmlspecialchars($teacher['Address']); ?>">
+                        <input type="hidden" name="phone" value="<?php echo htmlspecialchars($teacher['Phone']); ?>">
+                        <input type="hidden" name="email" value="<?php echo htmlspecialchars($teacher['Email']); ?>">
                         <button type="submit" class="btn btn-warning">Edit details</button>
                     </form>
 
@@ -94,13 +94,13 @@ session_start();
 
                 <div class="d-flex justify-content-center gap-2 mt-3">
                     <form action="tch_mng.php" method="POST" onsubmit="return confirmClear();">
-                        <input type="hidden" name="uid" value="<?php echo $student['UID']; ?>">
+                        <input type="hidden" name="uid" value="<?php echo $teacher['UID']; ?>">
                         <input type="hidden" name="action" value="clear">
                         <button type="submit" class="btn btn-danger">Clear Data</button>
                     </form>
 
                     <form action="tch_mng.php" method="POST" onsubmit="return confirmReinstate();">
-                        <input type="hidden" name="uid" value="<?php echo $student['UID']; ?>">
+                        <input type="hidden" name="uid" value="<?php echo $teacher['UID']; ?>">
                         <input type="hidden" name="action" value="reinstate">
                         <button type="submit" class="btn btn-warning">Reinstate</button>
                     </form>

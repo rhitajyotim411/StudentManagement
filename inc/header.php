@@ -36,6 +36,9 @@
           ) {
             ?>
             <li class="nav-item">
+              <a class="nav-link" href="./attendance.php">Attendance</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="./daily_att.php">Daily</a>
             </li>
             <li class="nav-item">
@@ -50,6 +53,13 @@
             ?>
             <li class="nav-item">
               <a class="nav-link" href="./teachers.php">Teacher List</a>
+            </li>
+          <?php } elseif (
+            $currentPage === 'daily_att_tch'
+          ) {
+            ?>
+            <li class="nav-item">
+              <a class="nav-link" href="./attendance.php">Attendance</a>
             </li>
           <?php }
           ?>
