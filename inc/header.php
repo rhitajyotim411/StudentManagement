@@ -42,6 +42,8 @@
             </li>
           <?php } elseif (
             $currentPage === 'teachers_db'
+            || $currentPage === 'tch_reg'
+            || $currentPage === 'tch_dtl'
           ) {
             ?>
             <li class="nav-item">

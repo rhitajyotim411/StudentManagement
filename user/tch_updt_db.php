@@ -8,7 +8,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teacher Registration</title>
+    <title>Teacher Edit</title>
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -33,6 +33,7 @@ session_start();
         unset($_SESSION['post']);
 
         $tbname = "tch_dtl";
+        $uid = $post["uid"];
         $name = $post['name'];
         $dob = $post['dob'];
         $address = $post['address'];
@@ -40,9 +41,15 @@ session_start();
         $email = $post['email'];
 
         try {
-            // teacher registration
-            $sql = "INSERT INTO {$tbname} (name, dob, address, phone, email, status)
-            VALUES (:name, :dob, :address, :phone, :email, :status)";
+            // teacher edit
+            $sql = "UPDATE {$tbname}
+            SET name = :name,
+                dob = :dob,
+                address = :address,
+                phone = :phone,
+                email = :email
+            WHERE uid = :uid";
+
             $stmt = $conn->prepare($sql);
             $stmt->execute([
                 ':name' => $name,
@@ -50,7 +57,7 @@ session_start();
                 ':address' => $address,
                 ':phone' => $phone,
                 ':email' => $email,
-                ':status' => 'active'
+                ':uid' => $uid,
             ]);
 
         } catch (PDOException $e) {
@@ -58,11 +65,19 @@ session_start();
             die("<br><a class=\"ref\" href='../index.php'>Homepage</a>");
         }
 
-        echo "<h5>Registered Successfully</h5>";
+        echo "<h5>Details updated Successfully</h5>";
         ?>
 
         <div class="d-flex justify-content-center gap-2 mt-3">
-            <a href="./tch_reg.php" class="btn btn-primary">Register Another</a>
+            <form action="tch_updt.php" method="post">
+                <input type="hidden" name="uid" value="<?php echo htmlspecialchars($uid); ?>">
+                <input type="hidden" name="name" value="<?php echo htmlspecialchars($name); ?>">
+                <input type="hidden" name="dob" value="<?php echo htmlspecialchars($dob); ?>">
+                <input type="hidden" name="address" value="<?php echo htmlspecialchars($address); ?>">
+                <input type="hidden" name="phone" value="<?php echo htmlspecialchars($phone); ?>">
+                <input type="hidden" name="email" value="<?php echo htmlspecialchars($email); ?>">
+                <button type="submit" class="btn btn-primary">Try again</button>
+            </form>
 
             <form action="teachers_db.php" method="POST">
                 <input type="hidden" name="status" value="active">
