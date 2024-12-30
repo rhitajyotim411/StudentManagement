@@ -1,7 +1,11 @@
 <nav class="navbar navbar-expand-sm bg-light navbar-light">
   <!-- Left -->
   <div class="container-fluid">
-    <a class="navbar-brand" href="../index.php">Home</a>
+    <?php if (!isset($_SESSION['UID'])): ?>
+      <a class="navbar-brand" href="../index.php">Home</a>
+    <?php else: ?>
+      <a class="navbar-brand" href="../user/dashboard.php">Home</a>
+    <?php endif; ?>
   </div>
 
   <?php
