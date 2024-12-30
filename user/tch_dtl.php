@@ -60,12 +60,10 @@ session_start();
                     </div>
                 </div>
             </div>
-
-            <?php
-            if ($status === 'active') {
-                ?>
-
-                <div class="d-flex justify-content-center gap-2 mt-3">
+            <div class="d-flex justify-content-center gap-2 mt-3">
+                <?php
+                if ($status === 'active') {
+                    ?>
                     <form action="tch_mng.php" method="POST" onsubmit="return confirmDelete();">
                         <input type="hidden" name="uid" value="<?php echo $teacher['UID']; ?>">
                         <input type="hidden" name="action" value="terminate">
@@ -86,13 +84,9 @@ session_start();
                         <input type="hidden" name="status" value="active">
                         <button type="submit" class="btn btn-primary">Active Teachers</button>
                     </form>
-                </div>
-
-                <?php
-            } elseif ($status === 'former') {
-                ?>
-
-                <div class="d-flex justify-content-center gap-2 mt-3">
+                    <?php
+                } elseif ($status === 'former') {
+                    ?>
                     <form action="tch_mng.php" method="POST" onsubmit="return confirmClear();">
                         <input type="hidden" name="uid" value="<?php echo $teacher['UID']; ?>">
                         <input type="hidden" name="action" value="clear">
@@ -109,11 +103,14 @@ session_start();
                         <input type="hidden" name="status" value="former">
                         <button type="submit" class="btn btn-primary">Former Teachers</button>
                     </form>
-                </div>
-
-                <?php
-            }
-            ?>
+                    <?php
+                }
+                ?>
+                <form action="tch_rec.php" method="POST">
+                    <input type="hidden" name="uid" value="<?php echo $teacher['UID']; ?>">
+                    <button type="submit" class="btn btn-secondary">Attendance</button>
+                </form>
+            </div>
         </div>
     </div>
 

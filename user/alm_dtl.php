@@ -74,6 +74,12 @@ session_start();
                 <form action="alumni.php" method="POST">
                     <button type="submit" class="btn btn-primary">Alumni List</button>
                 </form>
+
+                <form action="stu_rec.php" method="POST">
+                    <input type="hidden" name="uid" value="<?php echo $student['UID']; ?>">
+                    <input type="hidden" name="dtl" value="alm">
+                    <button type="submit" class="btn btn-secondary">View records</button>
+                </form>
             </div>
         </div>
     </div>

@@ -25,7 +25,9 @@
             || $currentPage === 'stu_rec'
             || $currentPage === 'stu_updt'
             || $currentPage === 'alumni'
+            || $currentPage === 'alm_dtl'
             || $currentPage === 'terminate'
+            || $currentPage === 'ter_dtl'
           ) {
             ?>
             <li class="nav-item">
@@ -50,6 +52,7 @@
             || $currentPage === 'tch_reg'
             || $currentPage === 'tch_dtl'
             || $currentPage === 'tch_updt'
+            || $currentPage === 'tch_rec'
           ) {
             ?>
             <li class="nav-item">

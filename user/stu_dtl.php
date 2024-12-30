@@ -91,6 +91,7 @@ session_start();
 
                 <form action="stu_rec.php" method="POST">
                     <input type="hidden" name="uid" value="<?php echo $student['UID']; ?>">
+                    <input type="hidden" name="dtl" value="stu">
                     <button type="submit" class="btn btn-secondary">View records</button>
                 </form>
 

@@ -7,7 +7,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Record</title>
+    <title>Monthly Attendance</title>
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
@@ -28,9 +28,7 @@ session_start();
 
         require_once '../inc/connect.php';
 
-        $dtl = $_POST['dtl'];
-        $tbname = "stu_att";
-        $current_month = date('n');
+        $tbname = "tch_att";
         $current_year = date('Y');
         $selected_year = isset($_POST['year']) ? $_POST['year'] : $current_year;
         $year_range = range($current_year - 5, $current_year);
@@ -66,7 +64,6 @@ session_start();
         <?php if ($selected_uid): ?>
             <form method="POST" class="mb-4">
                 <input type="hidden" name="uid" value="<?= htmlspecialchars($selected_uid) ?>">
-                <input type="hidden" name="dtl" value="<?php echo $dtl; ?>">
                 <div class="row justify-content-center">
                     <div class="col-auto">
                         <select name="year" id="year" class="form-select" onchange="this.form.submit()">
@@ -136,77 +133,14 @@ session_start();
                 <div class="legend-gradient"></div>
                 <span>High (<?= htmlspecialchars($global_max_attendance) ?>)</span>
             </div>
-
-            <h5 class="mb-3 mt-5">Fees Summary</h5>
-
-            <!--fees table-->
-            <div class="table-responsive">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <?php foreach (range(1, 12) as $month): ?>
-                                <th><?= date('M', mktime(0, 0, 0, $month, 1)) ?></th>
-                            <?php endforeach; ?>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        try {
-                            ?>
-                            <tr>
-                                <?php
-                                for ($m = 1; $m <= 12; $m++):
-                                    try {
-                                        $query = "SELECT 1 FROM fees WHERE year = :year AND month = :month AND uid = :uid";
-                                        $fee_stmt = $conn->prepare($query);
-                                        $fee_stmt->execute([
-                                            ':year' => $selected_year,
-                                            ':month' => $m,
-                                            ':uid' => $selected_uid
-                                        ]);
-                                        $fee_paid = $fee_stmt->rowCount() > 0;
-
-                                        if ($selected_year == $current_year) {
-                                            $cell_class = ($m == $current_month) ?
-                                                ($fee_paid ? 'paid' : 'current-unpaid') :
-                                                (($m < $current_month && $fee_paid) ? 'paid' : ($m < $current_month ? 'unpaid' : ''));
-                                        } else if ($selected_year < $current_year) {
-                                            $cell_class = $fee_paid ? 'paid' : 'unpaid';
-                                        } else {
-                                            $cell_class = '';
-                                        }
-                                        ?>
-                                        <td class="<?= $cell_class ?>">
-                                            <?php
-                                            echo $cell_class;
-                                            ?>
-                                        </td>
-                                        <?php
-                                    } catch (PDOException $e) {
-                                        echo "<td>Error: " . $e->getMessage() . "</td>";
-                                    }
-                                endfor;
-                                ?>
-                            </tr>
-                            <?php
-                        } catch (PDOException $e) {
-                            echo "Error fetching students: " . $e->getMessage();
-                            echo "<br><a class=\"ref\" href='../index.php'>Homepage</a>";
-                            die();
-                        }
-                        ?>
-                    </tbody>
-                </table>
-            </div>
-
         <?php elseif ($selected_uid): ?>
             <div class="alert alert-warning">No data found for the given UID.</div>
         <?php endif; ?>
 
         <div class="d-flex justify-content-center gap-2 mt-3">
-            <form action="<?php echo $dtl; ?>_dtl.php" method="POST">
-                <input type="hidden" name="stu_id" value="<?php echo $selected_uid; ?>">
-                <button type="submit" class="btn btn-primary">Student details</button>
+            <form action="tch_dtl.php" method="POST">
+                <input type="hidden" name="tch_id" value="<?php echo $selected_uid; ?>">
+                <button type="submit" class="btn btn-primary">Teacher details</button>
             </form>
         </div>
     </div>

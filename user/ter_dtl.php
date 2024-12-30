@@ -81,6 +81,12 @@ session_start();
                 <form action="terminate.php" method="POST">
                     <button type="submit" class="btn btn-primary">Terminated Students</button>
                 </form>
+
+                <form action="stu_rec.php" method="POST">
+                    <input type="hidden" name="uid" value="<?php echo $student['UID']; ?>">
+                    <input type="hidden" name="dtl" value="ter">
+                    <button type="submit" class="btn btn-secondary">View records</button>
+                </form>
             </div>
         </div>
     </div>
