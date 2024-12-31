@@ -30,8 +30,6 @@ session_start();
             }
             ?>
 
-            <h2>School Name</h2>
-
             <div class="row row-cols-1 row-cols-md-3 g-3 justify-content-center ">
                 <!-- Card 1 -->
                 <div class="col">

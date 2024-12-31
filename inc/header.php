@@ -100,3 +100,15 @@
     </div>
   <?php } ?>
 </nav>
+
+<!-- brand -->
+<div class="container-fluid p-0">
+  <div class="d-flex justify-content-center w-100 py-3" style="background-color: #092554; color: white;">
+    <!-- Square Logo -->
+    <div class="square-logo me-3">
+      <img src="../asset/logo.png" alt="Logo" class="img-fluid" style="width: 50px; height: 50px;">
+    </div>
+    <!-- Heading -->
+    <h1 class="m-0">ADARSHA SISHU VIDYAPITH</h1>
+  </div>
+</div>
