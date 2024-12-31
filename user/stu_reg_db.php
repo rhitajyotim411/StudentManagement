@@ -72,8 +72,8 @@ session_start();
             echo "<h5>Registered Successfully</h5>";
         }
         ?>
-        
-        <div class="d-flex justify-content-center gap-2 mt-3">
+
+        <div class="d-flex justify-content-center gap-2 m-3 flex-wrap">
             <form action="stu_reg.php" method="post">
                 <input type="hidden" name="class" value="<?php echo $class; ?>">
                 <input type="submit" name="submit" class="btn btn-primary" value="Register Another">

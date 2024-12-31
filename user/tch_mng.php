@@ -98,7 +98,7 @@ session_start();
         }
         ?>
 
-        <div class="d-flex justify-content-center gap-2 mt-3">
+        <div class="d-flex justify-content-center gap-2 m-3 flex-wrap">
             <form action="teachers_db.php" method="POST">
                 <input type="hidden" name="status" value="active">
                 <button type="submit" class="btn btn-primary">Active Teachers</button>

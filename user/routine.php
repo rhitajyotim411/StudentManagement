@@ -147,7 +147,7 @@ session_start();
                         </tbody>
                     </table>
                 </div>
-                <div class="d-flex justify-content-center gap-2 mt-3">
+                <div class="d-flex justify-content-center gap-2 m-3 flex-wrap">
                     <button type="button" id="toggleEditButton" class="btn btn-warning" onclick="toggleEditMode()"
                         data-mode="view">Edit</button>
                     <button type="submit" id="saveRoutineButton" class="btn btn-primary" disabled>Save Routine</button>

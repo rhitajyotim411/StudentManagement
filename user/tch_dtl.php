@@ -60,7 +60,7 @@ session_start();
                     </div>
                 </div>
             </div>
-            <div class="d-flex justify-content-center gap-2 mt-3">
+            <div class="d-flex justify-content-center gap-2 m-3 flex-wrap">
                 <?php
                 if ($status === 'active') {
                     ?>

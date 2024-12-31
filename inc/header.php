@@ -106,7 +106,7 @@
   <div class="d-flex justify-content-center align-items-center w-100 py-3"
     style="background-color: #092554; color: white;">
     <!-- Square Logo -->
-    <div class="square-logo me-3">
+    <div class="square-logo me-3 ms-3">
       <img src="../asset/logo.png" alt="Logo" class="img-fluid" style="width: 50px; height: 50px;">
     </div>
     <!-- Heading -->

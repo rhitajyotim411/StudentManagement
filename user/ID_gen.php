@@ -73,7 +73,7 @@ session_start();
         <div class="text-center mt-3 no-print">
             <input type="file" id="photoUpload" class="form-control btn-upload" accept="image/*">
 
-            <div class="d-flex justify-content-center gap-2 mt-3">
+            <div class="d-flex justify-content-center gap-2 m-3 flex-wrap">
                 <button id="printBtn" class="btn btn-success" onclick="window.print()" disabled>Print ID Card</button>
 
                 <form action="stu_dtl.php" method="POST">

@@ -64,7 +64,7 @@ session_start();
                 </div>
             </div>
 
-            <div class="d-flex justify-content-center gap-2 mt-3">
+            <div class="d-flex justify-content-center gap-2 m-3 flex-wrap">
                 <form action="stu_del.php" method="POST" onsubmit="return confirmDelete();">
                     <input type="hidden" name="tbname" value="<?php echo $tbname; ?>">
                     <input type="hidden" name="uid" value="<?php echo $student['UID']; ?>">

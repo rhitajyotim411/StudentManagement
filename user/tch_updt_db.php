@@ -68,7 +68,7 @@ session_start();
         echo "<h5>Details updated Successfully</h5>";
         ?>
 
-        <div class="d-flex justify-content-center gap-2 mt-3">
+        <div class="d-flex justify-content-center gap-2 m-3 flex-wrap">
             <form action="tch_updt.php" method="post">
                 <input type="hidden" name="uid" value="<?php echo htmlspecialchars($uid); ?>">
                 <input type="hidden" name="name" value="<?php echo htmlspecialchars($name); ?>">

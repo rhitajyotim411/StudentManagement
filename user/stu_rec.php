@@ -203,7 +203,7 @@ session_start();
             <div class="alert alert-warning">No data found for the given UID.</div>
         <?php endif; ?>
 
-        <div class="d-flex justify-content-center gap-2 mt-3">
+        <div class="d-flex justify-content-center gap-2 m-3 flex-wrap">
             <form action="<?php echo $dtl; ?>_dtl.php" method="POST">
                 <input type="hidden" name="stu_id" value="<?php echo $selected_uid; ?>">
                 <button type="submit" class="btn btn-primary">Student details</button>

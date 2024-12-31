@@ -85,7 +85,7 @@ session_start();
         }
         ?>
 
-        <div class="d-flex justify-content-center gap-2 mt-3">
+        <div class="d-flex justify-content-center gap-2 m-3 flex-wrap">
             <form action="stu_updt.php" method="post">
                 <input type="hidden" name="uid" value="<?php echo htmlspecialchars($uid); ?>">
                 <input type="hidden" name="class" value="<?php echo htmlspecialchars($class); ?>">
