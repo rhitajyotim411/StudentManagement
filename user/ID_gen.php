@@ -40,6 +40,7 @@ session_start();
             die(header("refresh:2; URL=../index.php"));
         }
 
+        $uid = $_POST['uid'];
         $class = $_POST['class'];
         $rollno = $_POST['rollno'];
         $name = $_POST['name'];
@@ -74,6 +75,11 @@ session_start();
 
             <div class="d-flex justify-content-center gap-2 mt-3">
                 <button id="printBtn" class="btn btn-success" onclick="window.print()" disabled>Print ID Card</button>
+
+                <form action="stu_dtl.php" method="POST">
+                    <input type="hidden" name="stu_id" value="<?php echo $uid; ?>">
+                    <button type="submit" class="btn btn-primary">Student details</button>
+                </form>
 
                 <form action="students_db.php" method="POST">
                     <input type="hidden" name="class" value="<?php echo $class; ?>">

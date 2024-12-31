@@ -85,17 +85,18 @@ session_start();
                 </form>
 
                 <form action="students_db.php" method="POST">
-                    <input type="hidden" name="class" value="<?php echo $student['Class']; ?>">
+                    <input type="hidden" name="class" value="<?php echo htmlspecialchars($student['Class']); ?>">
                     <button type="submit" class="btn btn-primary">Student List</button>
                 </form>
 
                 <form action="stu_rec.php" method="POST">
-                    <input type="hidden" name="uid" value="<?php echo $student['UID']; ?>">
+                    <input type="hidden" name="uid" value="<?php echo htmlspecialchars($student['UID']); ?>">
                     <input type="hidden" name="dtl" value="stu">
                     <button type="submit" class="btn btn-secondary">View records</button>
                 </form>
 
                 <form action="ID_gen.php" method="post">
+                    <input type="hidden" name="uid" value="<?php echo htmlspecialchars($student['UID']); ?>">
                     <input type="hidden" name="class" value="<?php echo htmlspecialchars($student['Class']); ?>">
                     <input type="hidden" name="rollno" value="<?php echo htmlspecialchars($student['RollNo']); ?>">
                     <input type="hidden" name="name" value="<?php echo htmlspecialchars($student['Name']); ?>">
@@ -105,6 +106,7 @@ session_start();
                 </form>
 
                 <form action="Rprt_gen.php" method="post">
+                    <input type="hidden" name="uid" value="<?php echo htmlspecialchars($student['UID']); ?>">
                     <input type="hidden" name="class" value="<?php echo htmlspecialchars($student['Class']); ?>">
                     <input type="hidden" name="rollno" value="<?php echo htmlspecialchars($student['RollNo']); ?>">
                     <input type="hidden" name="name" value="<?php echo htmlspecialchars($student['Name']); ?>">

@@ -40,6 +40,7 @@ session_start();
         }
 
         // Get student data from POST
+        $uid = $_POST['uid'];
         $class = $_POST['class'];
         $rollno = $_POST['rollno'];
         $name = $_POST['name'];
@@ -110,7 +111,12 @@ session_start();
 
         <div class="text-center mt-4 mb-4 no-print">
             <div class="d-flex justify-content-center gap-2">
-                <button type="button" class="btn btn-primary" onclick="validateAndPrint();">Print Report Card</button>
+                <button type="button" class="btn btn-success" onclick="validateAndPrint();">Print Report Card</button>
+
+                <form action="stu_dtl.php" method="POST">
+                    <input type="hidden" name="stu_id" value="<?php echo $uid; ?>">
+                    <button type="submit" class="btn btn-primary">Student details</button>
+                </form>
 
                 <form action="students_db.php" method="POST">
                     <input type="hidden" name="class" value="<?php echo $class; ?>">
