@@ -15,6 +15,31 @@ session_start();
     <!-- CSS -->
     <link href="../style/main.css" rel="stylesheet">
     <link href="../style/tick.css" rel="stylesheet">
+
+    <style>
+        input:disabled {
+            background-color: white !important;
+            color: black;
+        }
+
+        input:not(:disabled) {
+            border-color: red;
+        }
+
+        #successAlert {
+            z-index: 1050;
+            /* Ensures alert stays above other content */
+        }
+
+        @media (max-width: 767px) {
+            input[type="text"] {
+                width: 100% !important;
+                min-width: 150px;
+                /* Optional, you can adjust the minimum width */
+            }
+        }
+    </style>
+
     <script>
         function toggleEditMode() {
             const formFields = document.querySelectorAll('input[type="text"]');
@@ -32,6 +57,17 @@ session_start();
             toggleButton.textContent = isEditMode ? 'Edit' : 'View';
             toggleButton.dataset.mode = isEditMode ? 'view' : 'edit';
         }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const alertElement = document.getElementById('successAlert');
+            if (alertElement) {
+                setTimeout(() => {
+                    alertElement.style.transition = 'opacity 1s';
+                    alertElement.style.opacity = '0';
+                    setTimeout(() => alertElement.remove(), 1000);
+                }, 5000);
+            }
+        });
     </script>
 </head>
 
@@ -65,7 +101,7 @@ session_start();
             $updateQuery = "UPDATE class_routine SET " . implode(", ", array_map(fn($key) => "$key = ?", array_keys($_POST['routine']))) . " WHERE class_name = ?";
             $stmt = $conn->prepare($updateQuery);
             $stmt->execute(array_merge(array_values($_POST['routine']), [$selectedClass]));
-            echo "<script>alert('Routine updated successfully!');</script>";
+            echo "<div id='successAlert' class='alert alert-primary fixed-bottom text-center mb-0'>Routine updated successfully!</div>";
         }
         ?>
 
@@ -80,35 +116,37 @@ session_start();
 
         <?php if ($routine): ?>
             <form method="POST">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Day/Period</th>
-                            <th>Period 1</th>
-                            <th>Period 2</th>
-                            <th>Period 3</th>
-                            <th>Period 4</th>
-                            <th>Period 5</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        $days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
-                        foreach ($days as $day): ?>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
                             <tr>
-                                <td><?= ucfirst($day) ?></td>
-                                <?php for ($i = 1; $i <= 5; $i++):
-                                    $field = "{$day}_period{$i}";
-                                    ?>
-                                    <td>
-                                        <input type="text" class="form-control" name="routine[<?= $field ?>]"
-                                            value="<?= htmlspecialchars($routine[$field] ?? '') ?>" disabled>
-                                    </td>
-                                <?php endfor; ?>
+                                <th>Day/Period</th>
+                                <th>Period 1</th>
+                                <th>Period 2</th>
+                                <th>Period 3</th>
+                                <th>Period 4</th>
+                                <th>Period 5</th>
                             </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
+                            foreach ($days as $day): ?>
+                                <tr>
+                                    <td><?= ucfirst($day) ?></td>
+                                    <?php for ($i = 1; $i <= 5; $i++):
+                                        $field = "{$day}_period{$i}";
+                                        ?>
+                                        <td>
+                                            <input type="text" class="form-control" name="routine[<?= $field ?>]"
+                                                value="<?= htmlspecialchars($routine[$field] ?? '') ?>" disabled>
+                                        </td>
+                                    <?php endfor; ?>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
                 <div class="d-flex justify-content-center gap-2 mt-3">
                     <button type="button" id="toggleEditButton" class="btn btn-warning" onclick="toggleEditMode()"
                         data-mode="view">Edit</button>
