@@ -83,7 +83,7 @@ session_start();
                         <div class="card-body user-card d-flex flex-column align-items-center justify-content-center">
                             <h5 class="card-title">Class Routines</h5>
                             <p class="card-text">View class-wise student routine</p>
-                            <a href="#" class="btn btn-primary">View</a>
+                            <a href="./routine.php" class="btn btn-primary">View</a>
                         </div>
                     </div>
                 </div>
